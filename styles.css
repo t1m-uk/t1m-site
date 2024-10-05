@@ -1,0 +1,170 @@
+/* Global body styles */
+body {
+    font-family: sans-serif; /* Restored sans-serif font */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply box-sizing globally */
+* {
+    box-sizing: border-box;
+}
+
+/* Ensure HTML5 elements display correctly in older browsers */
+header, section, main, footer {
+    display: block;
+}
+
+/* Simple fallback for focus styles to support keyboard navigation */
+a:focus, button:focus, input:focus {
+    outline: 2px solid #000; /* High-contrast outline for focus */
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Prevent inline spacing issues */
+}
+
+/* Skip Link (Hidden until focused) */
+.skip-link {
+    position: absolute;
+    left: -999px; /* Hide off-screen */
+    top: -999px;
+}
+
+.skip-link:focus {
+    left: 0;
+    top: 0;
+    background: #000; /* Visible when focused */
+    color: #fff;
+    padding: 10px;
+    z-index: 100;
+}
+
+/* Navigation styling */
+nav {
+    background-color: #000; /* Black for navigation bar */
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: #fff; /* White text for links */
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    padding: 8px 12px; /* Padding for button-like look */
+    display: inline-block;
+}
+
+nav a:hover, nav a:focus {
+    text-decoration: underline; /* Indicate hover/focus state */
+}
+
+nav a.active {
+    background-color: #fff; /* Highlight the current page */
+    color: #000; /* Invert colors */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Main content styling */
+main {
+    padding: 20px;
+    max-width: 900px; /* Limit content width for better readability */
+    margin: 0 auto;
+    text-align: left; /* Left-align content for readability */
+}
+
+h1 {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 20px;
+    color: #333;
+}
+
+h2 {
+    font-size: 1.5em; /* Slightly smaller than h1 */
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+/* Code blocks and inline code */
+code {
+    font-family: monospace;
+    background: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+pre {
+    background: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ddd;
+    overflow-x: auto; /* Makes long code lines scrollable */
+}
+
+pre code {
+    display: block;
+    white-space: pre-wrap; /* Allows wrapping in narrow views */
+}
+
+/* Basic text inputs and text areas */
+input[type="text"], textarea {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px; /* Optional for rounded corners */
+    width: 100%; /* Make text inputs and text areas full-width */
+}
+
+/* Checkbox and radio button styling */
+input[type="checkbox"], input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Basic button styles */
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px; /* Optional */
+    cursor: pointer;
+}
+
+button:hover, button:focus {
+    background-color: #0056b3; /* Darker color on hover/focus */
+}
+
+/* Basic select dropdown styling */
+select {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* Footer styling */
+footer {
+    padding: 10px;
+    text-align: center; /* Centering the footer */
+    background-color: #f4f4f4;
+    margin-top: 30px;
+}
+
+/* Link focus and hover states for accessibility */
+a {
+    color: #007bff; /* High-contrast color for links */
+}
+
+a:hover, a:focus {
+    text-decoration: underline; /* Clear hover/focus state */
+}
