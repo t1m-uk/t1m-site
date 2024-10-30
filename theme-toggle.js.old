@@ -1,3 +1,11 @@
+// Apply the stored theme preference immediately
+const storedTheme = localStorage.getItem('dark');
+if (storedTheme === '1') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+} else {
+    document.documentElement.removeAttribute('data-theme');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const themeToggleButton = document.getElementById('theme-toggle');
 
