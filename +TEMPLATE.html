@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="XXX_PAGE_DESCRIPTION">
+    <meta name="author" content="The Rev. Illusion">
+    <title>XXX_PAGE_TITLE</title>
+    
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon/favicon-512.png" sizes="512x512" type="image/png">
+    <link rel="icon" href="favicon/favicon-192.png" sizes="192x192" type="image/png">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <a href="#nonsense" class="skip-link">Skip to content</a>
+        <a href="#stuff" class="skip-link">Skip to useful content</a>
+        <a href="#theme-toggle" class="skip-link">Skip to theme toggle</a>
+        <nav aria-label="Main navigation">
+            <a href="index.html" class="active">Ahoy!</a>
+            <a href="arch.html">Arch</a>
+            <a href="lineage.html">Lineage</a>
+            <a href="tools.html">Tools</a>
+        </nav>
+
+		<!-- Hide the theme-toggle button if JavaScript is disabled. -->
+		<noscript>
+			<style>
+				#theme-toggle { display: none; }
+			</style>
+		</noscript>
+        <button id="theme-toggle">JavaScript will replace this text.</button>
+
+    </header>
+
+    <main id="main-content">
+        <h1>Ahoy!</h1>
+
+        <section>
+            <h2 id="nonsense">Nonsense</h2>
+            <a href="#stuff" aria-label="Skip to useful content">(Skip &darr;)</a>
+
+            <p>XXX-NONSENSE</p>
+
+            <picture>
+                <source srcset="images_main/XXX_IMAGE_FILE.webp" type="image/webp">
+                <img src="images_main/XXX_IMAGE_FILE.jpg" alt="XXX_IMAGE_ALT" width="XXX_IMAGE_WIDTH" height="XXX_IMAGE_HEIGHT" class="responsive-image">
+            </picture>
+
+        </section>
+
+<hr>
+
+        <section id="stuff">
+            <h2>Stuff</h2>
+
+            <p>XXX-STUFF</p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 The Rev. Illusion<br><a href="index.html#disclaimer">Disclaimer</a></p>
+    </footer>
+
+    <script src="theme-toggle.js"></script>
+
+</body>
+</html>

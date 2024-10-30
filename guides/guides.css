@@ -1,0 +1,94 @@
+/* Base styles for guides */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    max-width: 900px;
+    padding: 0;
+}
+
+/* Outer list with Arabic numerals */
+ol {
+    list-style-type: decimal;
+}
+
+/* First-level nested list with lower-case letters */
+ol ol {
+    list-style-type: lower-alpha;
+}
+
+/* Increase space between top-level ordered list items */
+ol > li {
+    margin-bottom: 0.15em;
+}
+
+/* Add extra space above the first item of any nested ordered list */
+ol ol > li:first-child {
+    margin-top: 0.3em;
+}
+
+/* Text colors */
+h1, h2 {
+    color: #2a2a2a;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+/* Code styling with pure black text for higher contrast */
+code {
+    font-family: monospace;
+    background: #f4f4f4;
+    color: #000000; /* Pure black for higher contrast */
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+pre {
+    background: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ddd;
+    overflow-x: auto;
+}
+
+pre code {
+    display: block;
+    color: #000000; /* Pure black for higher contrast */
+}
+
+/* Footer styling */
+footer {
+    padding: 10px;
+    text-align: center;
+    background-color: #f4f4f4;
+    color: #2a2a2a;
+    margin-top: 30px;
+}
+
+/* Apply box-sizing globally */
+* {
+    box-sizing: border-box;
+}
+
+/* Ensure HTML5 elements display correctly in older browsers */
+header, section, main, footer {
+    display: block;
+}
+
+/* Simple fallback for focus styles to support keyboard navigation */
+a:focus, button:focus, input:focus {
+    outline: 2px solid #000; /* Black focus outline for visibility */
+}
+
+/* Media Queries for small screens */
+@media (max-width: 600px) {
+    body {
+        margin: 10px;
+        max-width: 100%;
+    }
+
+    h1, h2 {
+        font-size: 1.8em;
+    }
+}

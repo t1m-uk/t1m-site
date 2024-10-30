@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enable the Calculator keyboard button in Arch Linux">
+    <meta name="author" content="The Rev. Illusion">
+    <title>Calculator Button</title>
+
+    <link rel="icon" href="../favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon/favicon-512.png" sizes="512x512" type="image/png">
+    <link rel="icon" href="../favicon/favicon-192.png" sizes="192x192" type="image/png">
+    <link rel="stylesheet" href="guides.css">
+</head>
+<body>
+    <main>
+        <h1>Enable the <em>Calculator</em> Keyboard Button</h1>
+        <p>Many keyboards have a dedicated <em>Calculator</em> button. The following steps show how to enable that button, by using 
+           <a href="https://wiki.archlinux.org/title/Xbindkeys" target="_blank" rel="noopener noreferrer">xbindkeys</a>.
+        </p>
+
+        <h2>0. Install xbindkeys</h2>
+        <p>If <code>xbindkeys</code> is not already installed, install it. Then create a new default configuration file:</p>
+        <pre><code>$ sudo pacman -S xbindkeys
+$ xbindkeys --defaults &gt; ~/.xbindkeysrc
+</code></pre>
+        <p><strong>NOTE:</strong> The default <code>~/.xbindkeysrc</code> enables some example key bindings, which you will probably want to comment out.</p>
+
+        <h2>1. Map the key to a command</h2>
+        <p>Edit <code>~/.xbindkeysrc</code> to assign a command to the <code>XF86Calculator</code> button:</p>
+        <pre><code>"/usr/bin/galculator"
+XF86Calculator
+</code></pre>
+
+        <h2>2. Start xbindkeys</h2>
+        <p>Start <code>xbindkeys</code> by running:</p>
+        <pre><code>$ xbindkeys
+</code></pre>
+        <p>To ensure <code>xbindkeys</code> runs on startup, add it to your session autostart configuration, or include it in your <code>.xinitrc</code> or <code>.xprofile</code> file with:</p>
+        <pre><code>xbindkeys &
+</code></pre>
+
+        <h2>X. Troubleshooting</h2>
+        <p>Changes to <code>~/.xbindkeysrc</code> should be automatically applied (or at least, fixed with a reboot). If you don't want to reboot, try restarting your X session, and/or killing xbindkeys (forcing it to restart):</p>
+        <pre><code>$ killall -HUP xbindkeys
+</code></pre>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 The Rev. Illusion<br><a href="../index.html#disclaimer">Disclaimer</a></p>
+    </footer>
+</body>
+</html>

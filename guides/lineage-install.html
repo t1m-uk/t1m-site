@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guide to install or update LineageOS on Xiaomi Pocophone F1. Enable root with Magisk. Enable ad-blocking with AdAway.">
+    <meta name="author" content="The Rev. Illusion">
+    <title>Install LineageOS</title>
+
+    <link rel="icon" href="../favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon/favicon-512.png" sizes="512x512" type="image/png">
+    <link rel="icon" href="../favicon/favicon-192.png" sizes="192x192" type="image/png">
+
+    <link rel="stylesheet" href="guides.css">
+</head>
+<body>
+    <header>
+        <h1>LineageOS Installation Guide for Xiaomi Pocophone F1</h1>
+    </header>
+
+    <main>
+        <p>The following guide demonstrates how to install or update <strong>LineageOS</strong> on a <strong>Xiaomi Pocophone F1</strong>. Do NOT follow any steps unless you have the EXACT same phone: the <strong>Pocophone F1</strong>, also know as the <strong>Poco F1</strong>.</p>
+
+        <p>This guide assumes you have read the latest documentation on the LineageOS website, and know how to use <code>adb</code> (the <a href="https://developer.android.com/tools/adb" target="_blank" rel="noopener noreferrer">Android Debug Bridge</a>). It is also assumed that you have unlocked the bootloader.</p>
+
+<hr>
+
+        <h2>Install or Update LineageOS:</h2>
+        <ol>
+            <li>Download the latest <a href="https://download.lineageos.org/beryllium" target="_blank" rel="noopener noreferrer">LineageOS updates</a>.</li>
+
+            <li>Copy the file <code>boot.img</code> to the phone.</li>
+
+            <li>Reboot the phone in <strong>Fastboot</strong> mode.
+                <ol>
+                    <li>Flash the <strong>Recovery</strong> image:
+                        <pre><code>$ fastboot flash recovery /path/to/recovery.img</code></pre>
+                    </li>
+                    <li>Flash the <strong>vbmeta</strong> image:
+                        <pre><code>$ fastboot flash vbmeta --disable-verity --disable-verification /path/to/vbmeta.img</code></pre>
+                    </li>
+                </ol>
+            </li>
+
+            <li>Reboot into <strong>Recovery</strong>. (DO NOT BOOT OS YET AS IT WILL RESTORE THE OLD RECOVERY!)
+                <ol>
+                    <li>On the phone, select <strong>Apply update</strong>, then <strong>Apply from ADB</strong>. On the PC, run:
+                        <pre><code>$ adb sideload /path/to/lineageOS-image.zip</code></pre>
+                    </li>
+                    <li>For new LineageOS installations, optionally download and install the latest <a href="https://wiki.lineageos.org/gapps/" target="_blank" rel="noopener noreferrer">Google Apps</a>:
+                        <pre><code>$ adb -d sideload /path/to/GApps.zip</code></pre>
+                    </li>
+                    <p><strong>Note 1:</strong> The <code>signature verification failed</code> warning is expected for 3rd-party apps.<br>
+                    <strong>Note 2:</strong> Wipe the cache partition before rebooting.</p>
+                </ol>
+            </li>
+
+            <li>Reboot the phone into the <strong>main OS</strong>.</li>
+        </ol>
+
+        <hr>
+
+        <h2>Enable Root Access</h2>
+        <ol>
+            <li>For new LineageOS installations, install the <a href="https://github.com/topjohnwu/Magisk" target="_blank" rel="noopener noreferrer">Magisk</a> app. Enable the <strong>Systemless Hosts</strong> module.</li>
+            <li>Open the Magisk app, and press the <strong>Install</strong> button. Choose <strong>Select and Patch a File</strong>, and browse to the <code>boot.img</code> file mentioned in step 2. This will generate a patched boot image named <code>magisk_patched_[random_strings].img</code>.</li>
+            <li>Copy the patched boot image from the phone to the PC.</li>
+            <li>Reboot the phone into <strong>Fastboot</strong> mode.</li>
+            <li>Flash the patched boot image:
+                <pre><code>$ fastboot flash boot /path/to/magisk_patched.img</code></pre>
+            </li>
+            <li>Reboot the phone into the <strong>main OS</strong>.</li>
+        </ol>
+
+        <hr>
+
+        <h2>Enable Ad-blocking</h2>
+        <ol>
+            <li>For new LineageOS installations, install <a href="https://adaway.org/" target="_blank" rel="noopener noreferrer">AdAway</a>. Open Magisk and ensure that AdAway has <strong>Superuser</strong> privileges enabled.</li>
+        </ol>
+
+<hr>
+
+        <h2>Troubleshooting</h2>
+        <p>If Google Apps crashes repeatedly, reinstall LineageOS and immediately (before rebooting) reinstall Google Apps. Then clear the cache, and reboot. (As shown in the steps above.)</p>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 The Rev. Illusion<br><a href="../index.html#disclaimer">Disclaimer</a></p>
+    </footer>
+</body>
+</html>

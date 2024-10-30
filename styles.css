@@ -1,10 +1,12 @@
 /* Global body styles */
 body {
-    font-family: sans-serif; /* Restored sans-serif font */
+    font-family: sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: var(--bg-color); /* Uses theme variable */
+    color: var(--text-color); /* Uses theme variable */
 }
 
 /* Apply box-sizing globally */
@@ -19,27 +21,27 @@ header, section, main, footer {
 
 /* Simple fallback for focus styles to support keyboard navigation */
 a:focus, button:focus, input:focus {
-    outline: 2px solid #000; /* High-contrast outline for focus */
+    outline: 2px solid #000; /* Black focus outline in light mode */
 }
 
 /* Responsive images */
 img {
     max-width: 100%;
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Prevent inline spacing issues */
+    height: auto;
+    display: block;
 }
 
 /* Skip Link (Hidden until focused) */
 .skip-link {
     position: absolute;
-    left: -999px; /* Hide off-screen */
+    left: -999px;
     top: -999px;
 }
 
 .skip-link:focus {
     left: 0;
     top: 0;
-    background: #000; /* Visible when focused */
+    background: #000;
     color: #fff;
     padding: 10px;
     z-index: 100;
@@ -47,87 +49,125 @@ img {
 
 /* Navigation styling */
 nav {
-    background-color: #000; /* Black for navigation bar */
+    background-color: var(--nav-bg-color);
     padding: 10px;
     text-align: center;
 }
 
 nav a {
-    color: #fff; /* White text for links */
+    color: var(--nav-text-color);
     text-decoration: none;
     margin: 0 15px;
     font-weight: bold;
-    padding: 8px 12px; /* Padding for button-like look */
+    padding: 8px 12px;
     display: inline-block;
 }
 
 nav a:hover, nav a:focus {
-    text-decoration: underline; /* Indicate hover/focus state */
+    text-decoration: underline;
 }
 
+/* Focus styles for navigation links in light mode */
+nav a:focus {
+    outline: 2px solid #80d8ff; /* Light cyan focus outline for better visibility in light mode */
+}
+
+/* Enhanced focus visibility for nav links in dark mode */
+[data-theme="dark"] nav a:focus {
+    background-color: #444; /* Darker background for focused links */
+    text-decoration: underline;
+}
+
+/* Invert colours on selected/active navigation link */
 nav a.active {
-    background-color: #fff; /* Highlight the current page */
-    color: #000; /* Invert colors */
-    border-radius: 5px; /* Rounded corners */
+    color: var(--nav-bg-color);
+    background-color: var(--nav-text-color);
 }
 
 /* Main content styling */
 main {
     padding: 20px;
-    max-width: 900px; /* Limit content width for better readability */
+    max-width: 900px;
     margin: 0 auto;
-    text-align: left; /* Left-align content for readability */
+    text-align: left;
 }
 
 h1 {
     text-align: center;
     font-size: 2em;
     margin-top: 20px;
-    color: #333;
+    color: var(--text-color);
 }
 
 h2 {
-    font-size: 1.5em; /* Slightly smaller than h1 */
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 1.5em;
     margin-top: 20px;
     margin-bottom: 10px;
-    color: #333;
+}
+
+h2 + a {
+    font-size: 1em;
 }
 
 p {
     margin-bottom: 20px;
 }
 
-/* Code blocks and inline code */
+/* Code styling for light mode (matching guides.css) */
 code {
     font-family: monospace;
-    background: #f4f4f4;
+    background: #f4f4f4; /* Light grey for light mode */
+    color: #000000; /* Pure black text */
     padding: 2px 4px;
     border-radius: 3px;
 }
 
 pre {
-    background: #f4f4f4;
+    background: #f4f4f4; /* Light grey for light mode */
     padding: 10px;
     border: 1px solid #ddd;
-    overflow-x: auto; /* Makes long code lines scrollable */
+    overflow-x: auto;
 }
 
 pre code {
     display: block;
-    white-space: pre-wrap; /* Allows wrapping in narrow views */
+    color: #000000; /* Pure black for contrast */
 }
 
-/* Basic text inputs and text areas */
-input[type="text"], textarea {
+/* Dark mode variation for code blocks */
+[data-theme="dark"] code {
+    background: #333333; /* Dark grey for dark mode */
+    color: #e0e0e0; /* Light text for readability */
+}
+
+[data-theme="dark"] pre {
+    background: #2b2b2b; /* Slightly darker grey for dark mode */
+    border: 1px solid #444444; /* Darker border */
+    color: #e0e0e0;
+}
+
+/* Consolidated input, textarea, checkbox, and radio styles */
+input[type="text"], textarea, input[type="checkbox"], input[type="radio"] {
     padding: 8px;
     border: 1px solid #ccc;
-    border-radius: 4px; /* Optional for rounded corners */
-    width: 100%; /* Make text inputs and text areas full-width */
+    border-radius: 4px;
+    width: 100%;
+    margin-right: 10px; /* For checkboxes/radio buttons */
 }
 
-/* Checkbox and radio button styling */
-input[type="checkbox"], input[type="radio"] {
-    margin-right: 10px;
+/* Dark mode variation for all inputs, text areas, checkboxes, and radio buttons */
+[data-theme="dark"] input[type="text"], [data-theme="dark"] textarea,
+[data-theme="dark"] input[type="checkbox"], [data-theme="dark"] input[type="radio"] {
+    background-color: #2b2b2b;
+    color: #e0e0e0;
+    border: 1px solid #444444;
+}
+
+/* Focus styles for radio buttons and checkboxes */
+input[type="radio"]:focus, input[type="checkbox"]:focus {
+    outline: 2px solid #80d8ff; /* Light cyan focus outline for consistency */
 }
 
 /* Basic button styles */
@@ -136,35 +176,115 @@ button {
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 4px; /* Optional */
+    border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover, button:focus {
-    background-color: #0056b3; /* Darker color on hover/focus */
+    background-color: #0056b3;
 }
 
-/* Basic select dropdown styling */
-select {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 100%;
+#theme-toggle {
+    font-size: 1.8em;
+    padding: 0;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Focus styles for the Toggle button */
+#theme-toggle:focus {
+    outline: 2px solid #80d8ff; /* Light cyan focus outline for better visibility */
+}
+
+/* Dark mode for buttons */
+[data-theme="dark"] button {
+    background-color: #444444; /* Darker button background */
+    color: #e0e0e0; /* Light text */
+}
+
+[data-theme="dark"] button:hover, [data-theme="dark"] button:focus {
+    background-color: #555555; /* Slightly lighter on hover/focus */
 }
 
 /* Footer styling */
 footer {
     padding: 10px;
-    text-align: center; /* Centering the footer */
-    background-color: #f4f4f4;
+    text-align: center;
+    background-color: var(--footer-bg-color);
     margin-top: 30px;
 }
 
-/* Link focus and hover states for accessibility */
+/* Global link styling */
 a {
-    color: #007bff; /* High-contrast color for links */
+    color: var(--link-color);
 }
 
 a:hover, a:focus {
-    text-decoration: underline; /* Clear hover/focus state */
+    text-decoration: underline;
+}
+
+/* Dark mode hover state for links */
+[data-theme="dark"] a:hover {
+    color: #a3e0ff; /* Slightly brighter cyan on hover */
+}
+
+/* Default light theme */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #2a2a2a;
+    --link-color: #007bff;
+    --nav-bg-color: #000000;
+    --nav-text-color: #ffffff;
+    --footer-bg-color: #f4f4f4;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+    --bg-color: #1e1e1e;
+    --text-color: #e0e0e0;
+    --link-color: #80d8ff;
+    --nav-bg-color: #333333;
+    --nav-text-color: #e0e0e0;
+    --footer-bg-color: #333333;
+}
+
+/* Focus styles for dark mode */
+[data-theme="dark"] a:focus, [data-theme="dark"] button:focus, [data-theme="dark"] input:focus {
+    outline: 2px solid #80d8ff;
+}
+
+/* Float the toggle button to the right */
+#theme-toggle {
+    float: right;
+    margin-top: 15px; /* Moves it slightly down */
+    margin-right: 15px; /* Moves it slightly to the left */
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#theme-toggle:hover, #theme-toggle:focus {
+    background-color: #0056b3;
+}
+
+/* Media Queries for small screens */
+@media (max-width: 600px) {
+    main {
+        padding: 10px;
+        max-width: 100%;
+    }
+
+    h1, h2 {
+        font-size: 1.8em;
+    }
+
+    nav a {
+        padding: 6px 8px;
+        margin: 0 5px;
+    }
 }
