@@ -19,9 +19,9 @@
     </header>
 
     <main>
-        <p>The following guide demonstrates how to install or update <strong>LineageOS</strong> on a <strong>Xiaomi Pocophone F1</strong>. Do NOT follow any steps unless you have the EXACT same phone: the <strong>Pocophone F1</strong>, also know as the <strong>Poco F1</strong>.</p>
 
-        <p>This guide assumes you have read the latest documentation on the LineageOS website, and know how to use <code>adb</code> (the <a href="https://developer.android.com/tools/adb" target="_blank" rel="noopener noreferrer">Android Debug Bridge</a>). It is also assumed that you have unlocked the bootloader.</p>
+	<p>Note that this guide is for educational purposes only. Unless you know <strong>exactly</strong> what you're doing, you should instead follow the <strong>official</strong> installation and update instructions in the <a href="https://wiki.lineageos.org/devices/beryllium/" target="_blank" rel="noopener noreferrer">LineageOS Wiki</a>.</p>
+	<p>This <em>unofficial</em> guide explains how to install or update <strong>LineageOS</strong> on the <strong>Xiaomi Pocophone F1</strong> (also called the <em>Poco F1</em>).</p>
 
 <hr>
 
@@ -42,7 +42,7 @@
                 </ol>
             </li>
 
-            <li>Reboot into <strong>Recovery</strong>. (DO NOT BOOT OS YET AS IT WILL RESTORE THE OLD RECOVERY!)
+            <li>Reboot into <strong>Recovery</strong>. <em>(Do not boot into the main OS yet, as it will restore the old Recovery!)</em>
                 <ol>
                     <li>On the phone, select <strong>Apply update</strong>, then <strong>Apply from ADB</strong>. On the PC, run:
                         <pre><code>$ adb sideload /path/to/lineageOS-image.zip</code></pre>
@@ -50,20 +50,24 @@
                     <li>For new LineageOS installations, optionally download and install the latest <a href="https://wiki.lineageos.org/gapps/" target="_blank" rel="noopener noreferrer">Google Apps</a>:
                         <pre><code>$ adb -d sideload /path/to/GApps.zip</code></pre>
                     </li>
-                    <p><strong>Note 1:</strong> The <code>signature verification failed</code> warning is expected for 3rd-party apps.<br>
-                    <strong>Note 2:</strong> Wipe the cache partition before rebooting.</p>
+   
+
+                    <p><strong>Note 1:</strong> Google Apps can <strong>only</strong> be installed after a factory reset. Likewise, a factory reset is required to remove Google Apps.<br>
+                    <strong>Note 2:</strong> The <code>signature verification failed</code> warning is expected for 3rd-party (non-LineageOS) apps.<br>
+                    <strong>Note 3:</strong> Wipe the cache partition before rebooting.</p>
+
+
                 </ol>
             </li>
-
             <li>Reboot the phone into the <strong>main OS</strong>.</li>
         </ol>
 
-        <hr>
+<hr>
 
         <h2>Enable Root Access</h2>
         <ol>
             <li>For new LineageOS installations, install the <a href="https://github.com/topjohnwu/Magisk" target="_blank" rel="noopener noreferrer">Magisk</a> app. Enable the <strong>Systemless Hosts</strong> module.</li>
-            <li>Open the Magisk app, and press the <strong>Install</strong> button. Choose <strong>Select and Patch a File</strong>, and browse to the <code>boot.img</code> file mentioned in step 2. This will generate a patched boot image named <code>magisk_patched_[random_strings].img</code>.</li>
+            <li>Open the Magisk app, and press the <strong>Install</strong> button. Choose <strong>Select and Patch a File</strong>, and browse to the latest <code>boot.img</code> file. This will generate a patched boot image named <code>magisk_patched_[random_strings].img</code>.</li>
             <li>Copy the patched boot image from the phone to the PC.</li>
             <li>Reboot the phone into <strong>Fastboot</strong> mode.</li>
             <li>Flash the patched boot image:
@@ -72,17 +76,17 @@
             <li>Reboot the phone into the <strong>main OS</strong>.</li>
         </ol>
 
-        <hr>
+<hr>
 
         <h2>Enable Ad-blocking</h2>
         <ol>
-            <li>For new LineageOS installations, install <a href="https://adaway.org/" target="_blank" rel="noopener noreferrer">AdAway</a>. Open Magisk and ensure that AdAway has <strong>Superuser</strong> privileges enabled.</li>
+            <li>For new LineageOS installations, install <a href="https://adaway.org/" target="_blank" rel="noopener noreferrer">AdAway</a>.<br> Open Magisk and ensure that AdAway has <strong>Superuser</strong> privileges enabled.</li>
         </ol>
 
 <hr>
 
         <h2>Troubleshooting</h2>
-        <p>If Google Apps crashes repeatedly, reinstall LineageOS and immediately (before rebooting) reinstall Google Apps. Then clear the cache, and reboot. (As shown in the steps above.)</p>
+        <p>If Google Apps crashes repeatedly, reinstall LineageOS and immediately (before rebooting) reinstall Google Apps. Then clear the cache, and reboot. (Essentially, reinstall LineageOS as if it was a first time installation, including all the steps shown above.)</p>
 
     </main>
 
