@@ -10,10 +10,8 @@
     <meta http-equiv="Expires" content="0">
 
     <title>Password Generator</title>
-    <meta name="description" content="A random password generator tool; a self-contained web page intended for offline use.">
+    <meta name="description" content="A secure random password generator intended for offline use.">
     <meta name="author" content="The Rev. Illusion">
-
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <style>
         body {
@@ -28,13 +26,18 @@
         }
 
         code {
-            font-family: monospace; /* Monospaced font for code */
+            font-family: monospace;
             background-color: #f4f4f4; /* Light background for contrast */
             color: #333; /* Dark text for readability */
             padding: 2px 4px; /* Small padding around the code */
             border-radius: 4px; /* Rounded corners */
             border: 1px solid #ddd; /* Light border for definition */
         }
+
+        li {
+            margin-bottom: 10px;
+        }
+
 
         label {
             width: 200px;
@@ -59,13 +62,14 @@
             cursor: pointer;
         }
         #password {
-            height: 20px; /* ensures a consistent display space */
-            line-height: 20px;
+            line-height: 1.2;
             font-weight: bold;
             font-family: monospace;
+            font-size: 1.4em;
         }
         .charset-info {
             margin-left: 10px;
+            color: #000000;
         }
         .button-group {
             display: flex;
@@ -88,22 +92,22 @@
     <h1>Password Generator</h1>
     <div class="input-group">
         <label for="uppercase">Upper case:</label>
-        <input type="checkbox" id="uppercase" checked onclick="toggleLabelColor('uppercase', 'uppercaseChars')">
+        <input type="checkbox" id="uppercase" checked onclick="toggleLabelColor('uppercase', 'uppercaseChars')" aria-describedby="uppercaseChars">
         <span id="uppercaseChars" class="charset-info">ABC...XYZ</span>
     </div>
     <div class="input-group">
         <label for="lowercase">Lower case:</label>
-        <input type="checkbox" id="lowercase" checked onclick="toggleLabelColor('lowercase', 'lowercaseChars')">
+        <input type="checkbox" id="lowercase" checked onclick="toggleLabelColor('lowercase', 'lowercaseChars')" aria-describedby="lowercaseChars">
         <span id="lowercaseChars" class="charset-info">abc...xyz</span>
     </div>
     <div class="input-group">
         <label for="numbers">Numerals:</label>
-        <input type="checkbox" id="numbers" checked onclick="toggleLabelColor('numbers', 'numberChars')">
+        <input type="checkbox" id="numbers" checked onclick="toggleLabelColor('numbers', 'numberChars')" aria-describedby="numberChars">
         <span id="numberChars" class="charset-info">0...9</span>
     </div>
     <div class="input-group">
         <label for="special">Special:</label>
-        <input type="checkbox" id="special" checked onclick="toggleLabelColor('special', 'specialChars')">
+        <input type="checkbox" id="special" checked onclick="toggleLabelColor('special', 'specialChars')" aria-describedby="specialChars">
         <span id="specialChars" class="charset-info">!@#$%^&amp;*()-_=+[]{}|;:,.&lt;&gt;?/~</span>
     </div>
     <div class="input-group length-group">
@@ -123,22 +127,31 @@
         <button onclick="generatePassword()">Generate Password</button>
         <button id="copyButton" onclick="copyPassword()" disabled>Copy Password</button>
     </div>
-    <p id="password" role="status">&nbsp;</p>
+
+<hr>
+
+    <p id="password" role="status" aria-live="polite">&nbsp;</p>
 
     <hr>
 
     <div class="summary">
         <h2>Methodology</h2>
-        <p>This web page is a static self-contained HTML file with no dependencies. It is intended to be downloaded, and used to generate passwords in a secure offline environment. You should inspect the code to verify that it is both trustworthy and correct! Use at your own risk!</p>
-        <p>The JavaScript <code>window.crypto.getRandomValues</code> function is used to generate a cryptographically secure random password, using system-level entropy sources such as hardware noise and operating system entropy pools.</p>
-        <p>Rejection sampling has been implemented to avoid modulo bias, ensuring a statistically fair distribution of all possible characters. Caching has been disabled to ensure that generated passwords are not stored by the browser.</p>
+        <ul>
+	   <li>This web page is a single file with no dependencies. Ideally, it should be downloaded and used in a secure offline environment.</li>
+           <li>The JavaScript <code>window.crypto.getRandomValues</code> function is used to generate a cryptographically secure random password, using system-level entropy sources such as hardware noise and operating system entropy pools.</li>
+           <li>Rejection sampling has been implemented to avoid modulo bias, ensuring a statistically fair distribution of all possible characters.</li>
+           <li>Caching has been disabled to ensure that generated passwords are not stored by the browser.</li>
+        </ul>
+
+        <p><strong>IMPORTANT:</strong> You <em>must</em> inspect the code to verify that it is both trustworthy and correct! Use at your own risk! This is a personal project for educational purposes only!</p>
+
     </div>
 
     <script>
-        // Function to get a random integer within a specified range without bias
+        // Function to get a random integer within a specified range; using rejection sampling to avoid modulo bias.
         function getRandomInt(max) {
             const rand = new Uint32Array(1);
-            const limit = Math.floor(0xFFFFFFFF / max) * max;
+            const limit = Math.floor(0x100000000 / max) * max;
             let randomNumber;
 
             do {
@@ -149,11 +162,11 @@
             return randomNumber % max;
         }
 
-        function toggleLabelColor(checkboxId, labelId) {
-            // Toggles the color to indicate if the corresponding characters are included
-            const labelElement = document.getElementById(labelId);
-            labelElement.style.color = document.getElementById(checkboxId).checked ? 'black' : 'gray';
-        }
+		function toggleLabelColor(checkboxId, labelId) {
+			// Improved contrast colors
+			const labelElement = document.getElementById(labelId);
+			labelElement.style.color = document.getElementById(checkboxId).checked ? '#000000' : '#666666';
+		}
 
         function generatePassword() {
             // Check if window.crypto.getRandomValues is supported
@@ -194,15 +207,18 @@
             document.getElementById('copyButton').disabled = false;
         }
 
-        function copyPassword() {
-            // Copy the generated password to the clipboard
-            const password = document.getElementById('password').innerText;
-            navigator.clipboard.writeText(password).then(() => {
-                alert('Password copied to clipboard!');
-            }).catch(err => {
-                console.error('Failed to copy: ', err);
-            });
-        }
+		function copyPassword() {
+			const password = document.getElementById('password').innerText;
+			if (navigator.clipboard && navigator.clipboard.writeText) {
+				navigator.clipboard.writeText(password).then(() => {
+					alert('Password copied to clipboard!');
+				}).catch(err => {
+					alert('ERROR: Failed to copy password. Please copy it manually.');
+				});
+			} else {
+				alert('ERROR: Failed to copy password. Please copy it manually.');
+			}
+		}
 
         // Initial setup on page load
         document.addEventListener('DOMContentLoaded', () => {
@@ -217,6 +233,4 @@
     </script>
 
 </body>
-
-
 </html>

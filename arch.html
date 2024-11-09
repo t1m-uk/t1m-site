@@ -74,10 +74,58 @@
         <section id="stuff">
             <h2>Stuff</h2>
 
-<h3>Extra Keyboard Buttons</h3>
-<p>Many keyboards have additional shortcut keys. Here's how to map the <em>Calculator</em> keyboard button to a program (such as <code>/usr/bin/galculator</code>):</p>
-<p><a href="guides/arch-keyboard-calc.html" target="_blank" rel="noopener noreferrer">Enable the <em>Calculator</em> keyboard button</a></p>
+		<h3>Extra Keyboard Buttons</h3>
+		<p>Many keyboards have additional shortcut keys. Here's how to map the <em>Calculator</em> keyboard button to a program (such as <code>/usr/bin/galculator</code>):</p>
+		<p><a href="guides/arch-keyboard-calc.html" target="_blank" rel="noopener noreferrer">Enable the <em>Calculator</em> keyboard button</a></p>
 
+		<!-- ------------------- -->
+		
+		<h3>Reinstall GRUB</h3>
+		<p>Occasionally, an update (e.g. with <code>pacman -Syu</code>), will instruct you to reinstall GRUB.</p>
+
+		<ul>
+			<li><p>On my modern UEFI/GPT laptop, I would run:</p>
+			
+			<pre><code>$ sudo grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+$ sudo grub-mkconfig -o /boot/grub/grub.cfg</code></pre></li>
+			
+			<li><p>On my old BIOS/MBR PC, I run:</p>
+			
+			<pre><code>$ sudo grub-install --target=i386-pc /dev/sde
+$ sudo grub-mkconfig -o /boot/grub/grub.cfg</code></pre></li>
+		</ul>
+
+		<!-- ------------------- -->
+
+		<h3>Connect to a wireless network</h3>
+		<p>I rarely use wi-fi. For better privacy and performance, I start Arch with the wireless adaptor disabled. It is easily enabled with <code>modprobe</code>, then <code>iwctl</code> can scan for and connect to nearby networks:</p>
+		
+		<pre><code>$ sudo modprobe rtw88_8821ce
+$ iwctl
+     station wl-wifi scan
+     station wl-wifi get-networks
+     station wl-wifi connect &lt;<var>SSID</var>&gt; </code></pre>
+
+		<!-- ------------------- -->
+
+		<h3>Remove EXIF metadata in image files</h3>
+		<p>Image files typically contain metadata (data about data), which may include a timestamp and the GPS co-ordinates of the location a photo was taken. You can use <code>exiftool</code> to remove metadata.
+		<p>For example, the script below will remove EXIF metadata from any .jpg and .webp files in the current directory:</p>
+		
+		<pre><code>#!/bin/bash
+$ exiftool -all= -overwrite_original *.jpg
+$ exiftool -all= -overwrite_original *.webp</code></pre>
+
+		<!-- ------------------- -->
+
+		<h3>Missing characters in XFCE notifications</h3>
+		<p>If you notice missing characters in XFCE notifications, the font cache may have become corrupted. To rebuild the cache, run:</p>
+        <pre><code>$ fc-cache -fv</code></pre>
+
+        <p>Sometimes, font caches don’t clear properly with fc-cache. You can delete the cache files directly and regenerate them:</p>
+		<pre><code>$ rm -rf ~/.cache/fontconfig/*
+$ sudo rm -rf /var/cache/fontconfig/*
+$ fc-cache -fv</code></pre>
         </section>
 
     </main>
