@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to set button text and aria-label based on theme
     function updateToggleButton(isDarkMode) {
         if (isDarkMode) {
-            themeToggleButton.innerHTML = '🌙 &rarr; 🌞'; // Moon→Sun
+            themeToggleButton.innerHTML = '🌞'; // Moon→Sun
             themeToggleButton.setAttribute('aria-label', 'Switch to light mode');
         } else {
-            themeToggleButton.innerHTML = '🌞 &rarr; 🌙'; // Sun→Moon
+            themeToggleButton.innerHTML = '🌙'; // Sun→Moon
             themeToggleButton.setAttribute('aria-label', 'Switch to dark mode');
         }
     }

@@ -11,6 +11,13 @@
     <link rel="icon" href="favicon/favicon-512.png" sizes="512x512" type="image/png">
     <link rel="icon" href="favicon/favicon-192.png" sizes="192x192" type="image/png">
 
+    <!-- Hide the theme-toggle button if JavaScript is disabled. -->
+	<noscript>
+		<style>
+			#theme-toggle { display: none; }
+		</style>
+	</noscript>
+
     <!-- Add this script before loading the CSS -->
     <script>
         (function() {
@@ -24,6 +31,8 @@
             }
         })();
     </script>
+
+    
     
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -40,13 +49,7 @@
             <a href="tools.html">Tools</a>
         </nav>
 
-		<!-- Hide the theme-toggle button if JavaScript is disabled. -->
-		<noscript>
-			<style>
-				#theme-toggle { display: none; }
-			</style>
-		</noscript>
-        <button id="theme-toggle"> </button>
+    <button id="theme-toggle"> </button>
 
     </header>
 
