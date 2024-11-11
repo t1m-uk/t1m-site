@@ -96,7 +96,7 @@
 
             <picture>
                 <source srcset="images_main/ahoy2.webp" type="image/webp">
-                <img src="images_main/ahoy2.jpg" alt="An anthropomorphic slice of bread cheerfully discusses bagels with a talking toaster." width="1024" height="1024" class="responsive-image">
+                <img src="images_main/ahoy2.jpg" alt="Retro 1950s lithographic print style: A surreal breakfast-table scene, with a talking toaster, and an anthopomorphic slice of bread with poppy-seeds cheerfully wielding a sword." width="1024" height="1024" class="responsive-image">
             </picture>
 
         </section>
