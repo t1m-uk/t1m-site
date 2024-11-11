@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-	<meta http-equiv="Content-Security-Policy" content="default-src 'self';">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Password Generator</title>
@@ -134,7 +133,6 @@
         <h2>Methodology</h2>
         <ul>
 	       <li>This web page is a single file with no dependencies.</li>
-	       <li>A restrictive Content Security Policy (CSP) is in place to block all external sources.</li>
 	       <li>For optimum security, this page should be downloaded, and only used in a secure offline environment.</li>
            <li>The JavaScript <code>window.crypto.getRandomValues</code> function is used to generate a cryptographically secure random password, using system-level entropy sources such as hardware noise and operating system entropy pools.</li>
            <li>Rejection sampling has been implemented to avoid modulo bias, ensuring a statistically fair distribution of all possible characters.</li>
