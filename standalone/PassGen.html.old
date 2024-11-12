@@ -84,7 +84,12 @@
 </head>
 
 <body>
-    <h1>Password Generator</h1>
+	
+	<header>
+        <h1>Password Generator</h1>
+    </header>
+    
+	<main>
     <div class="input-group">
         <label for="uppercase">Upper case:</label>
         <input type="checkbox" id="uppercase" checked onclick="toggleLabelColor('uppercase', 'uppercaseChars')" aria-describedby="uppercaseChars">
@@ -105,9 +110,10 @@
         <input type="checkbox" id="special" checked onclick="toggleLabelColor('special', 'specialChars')" aria-describedby="specialChars">
         <span id="specialChars" class="charset-info">!@#$%^&amp;*()-_=+[]{}|;:,.&lt;&gt;?/~</span>
     </div>
+    
     <div class="input-group length-group">
-        <label class="length-label">Password Length:</label>
-        <div>
+        <fieldset>
+			<legend>Password Length:</legend>
             <input type="radio" name="length" id="length8" value="8">
             <label for="length8">8 characters</label><br>
             <input type="radio" name="length" id="length12" value="12">
@@ -116,8 +122,9 @@
             <label for="length32">32 characters</label><br>
             <input type="radio" name="length" id="length64" value="64" checked>
             <label for="length64">64 characters</label>
-        </div>
+        </fieldset>
     </div>
+    
     <div class="button-group">
         <button onclick="generatePassword()">Generate Password</button>
         <button id="copyButton" onclick="copyPassword()" disabled>Copy Password</button>
@@ -125,23 +132,25 @@
 
 <hr>
 
-    <p id="password" role="status" aria-live="polite">&nbsp;</p>
+    <p id="password" role="status" aria-live="polite" tabindex="0">&nbsp;</p>
 
     <hr>
 
     <div class="summary">
         <h2>Methodology</h2>
         <ul>
-	   <li>This web page is a single file with no dependencies. Ideally, it should be downloaded and used in a secure offline environment.</li>
+	       <li>This web page is a single file with no dependencies.</li>
+	       <li>For optimum security, this page should be downloaded, and used in a secure offline environment.</li>
            <li>The JavaScript <code>window.crypto.getRandomValues</code> function is used to generate a cryptographically secure random password, using system-level entropy sources such as hardware noise and operating system entropy pools.</li>
            <li>Rejection sampling has been implemented to avoid modulo bias, ensuring a statistically fair distribution of all possible characters.</li>
-           <li>Caching has been disabled to ensure that generated passwords are not stored by the browser.</li>
+           <li>Remember to close this page and <strong>clear your clipboard</strong> after pasting the password!</li>
         </ul>
 
-        <p><strong>IMPORTANT:</strong> You <em>must</em> inspect the code to verify that it is both trustworthy and correct! Use at your own risk! This is a personal project for educational purposes only!</p>
+        <p><strong>IMPORTANT:</strong> For your own safety, you <em>must</em> inspect the code to verify that it is both trustworthy and correct! Use at your own risk! This is a personal project for educational purposes only!</p>
 
     </div>
-
+    </main>
+    
     <script>
         // Function to get a random integer within a specified range; using rejection sampling to avoid modulo bias.
         function getRandomInt(max) {
