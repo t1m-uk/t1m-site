@@ -2,12 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="A cryptographically secure random password generator intended for offline use.">
+    <meta name="author" content="The Rev. Illusion">
+    
+    <!-- Adapt page width according to screen size for mobile-friendly layout: -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Password Generator</title>
-    <meta name="description" content="A secure random password generator intended for offline use.">
-    <meta name="author" content="The Rev. Illusion">
+	<!-- Do NOT allow this page to access external content. Allow in-line CSS and JavaScript: -->
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';">
 
+	<!-- Do NOT cache this page -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <!-- Do NOT send referrer data to external sites -->
+    <meta name="referrer" content="no-referrer">
+
+    <!-- Do NOT allow this page to be embedded in an iFrame -->
+    <meta http-equiv="X-Frame-Options" content="DENY">
+
+	<title>Password Generator</title>
+	
     <style>
         body {
             font-family: sans-serif;
@@ -22,11 +38,11 @@
 
         code {
             font-family: monospace;
-            background-color: #f4f4f4; /* Light background for contrast */
-            color: #333; /* Dark text for readability */
-            padding: 2px 4px; /* Small padding around the code */
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 2px 4px;
             border-radius: 4px; /* Rounded corners */
-            border: 1px solid #ddd; /* Light border for definition */
+            border: 1px solid #ddd;
         }
 
         li {
@@ -38,16 +54,9 @@
             margin-right: 10px;
             text-align: right;
         }
-        .length-group {
-            display: flex;
-            align-items: flex-start;
-        }
-        .length-label {
-            margin-right: 10px;
-            text-align: right;
-            padding-top: 5px;
-        }
-        input[type="checkbox"], input[type="radio"] {
+        
+        input[type="checkbox"],
+        input[type="radio"] {
             margin-right: 10px;
         }
         button {
@@ -79,19 +88,21 @@
             line-height: 1.6;
         }
 
-		/* New CSS for aligning fieldsets and labels */
         .fieldset-group {
-            width: 500px; /* Adjust this width to your preference */
+            width: 500px;
             margin-bottom: 20px;
         }
 
-        .input-group label,
-        .length-group label {
-            width: 160px; /* Same width to align with radio buttons */
+		/* Add left padding to radio buttons for alignment */
+		.fieldset-group input[type="radio"] {
+			margin-left: 145px;
+		}
+
+        .input-group label {
+            width: 130px; /* Used for tick boxes */
             margin-right: 10px;
             text-align: right;
         }
-
 
     </style>
 </head>
@@ -105,7 +116,7 @@
 	<main>
 		
     <fieldset class="fieldset-group">
-		<legend>Character selection:</legend>
+		<legend><b>Character selection:</b></legend>
 		<div class="input-group">
 			<label for="uppercase">Upper case:</label>
 			<input type="checkbox" id="uppercase" checked onclick="toggleLabelColor('uppercase', 'uppercaseChars')" aria-describedby="uppercaseChars">
@@ -128,19 +139,26 @@
 		</div>
     </fieldset>
     
-    <div class="input-group length-group">
-        <fieldset class="fieldset-group">
-			<legend>Password Length:</legend>
-            <input type="radio" name="length" id="length8" value="8">
-            <label for="length8">8 characters</label><br>
-            <input type="radio" name="length" id="length12" value="12">
-            <label for="length12">12 characters</label><br>
-            <input type="radio" name="length" id="length32" value="32">
-            <label for="length32">32 characters</label><br>
-            <input type="radio" name="length" id="length64" value="64" checked>
-            <label for="length64">64 characters</label>
-        </fieldset>
-    </div>
+	<fieldset class="fieldset-group">
+		<legend><b>Password length:</b></legend>
+		<div class="input-group">
+			<input type="radio" name="length" id="length8" value="8">
+			<label for="length8">8 characters</label>
+		</div>
+		<div class="input-group">
+			<input type="radio" name="length" id="length12" value="12">
+			<label for="length12">12 characters</label>
+		</div>
+		<div class="input-group">
+			<input type="radio" name="length" id="length32" value="32">
+			<label for="length32">32 characters</label>
+		</div>
+		<div class="input-group">
+			<input type="radio" name="length" id="length64" value="64" checked>
+			<label for="length64">64 characters</label>
+		</div>
+	</fieldset>
+
     
     <div class="button-group">
         <button onclick="generatePassword()">Generate Password</button>
@@ -156,15 +174,12 @@
     <div class="summary">
         <h2>Methodology</h2>
 
-        <p><strong>IMPORTANT:</strong> For your own safety, you <em>must</em> inspect the code to verify that it is both trustworthy and correct! Use at your own risk! This is a personal project for educational purposes only!</p>
+        <p>This web page implements the <code>window.crypto.getRandomValues</code> JavaScript function to generate cryptographically secure random numbers, with system-level entropy sources such as hardware noise and operating system entropy pools.</p>
+        <p>Rejection sampling is used to avoid modulo bias, ensuring a statistically fair distribution of all possible characters.</p>
 
-        <ul>
-	       <li>This web page is a single file with no dependencies.</li>
-	       <li>For optimum security, this page should be downloaded, and used in a secure offline environment.</li>
-           <li>The JavaScript <code>window.crypto.getRandomValues</code> function is used to generate a cryptographically secure random password, using system-level entropy sources such as hardware noise and operating system entropy pools.</li>
-           <li>Rejection sampling has been implemented to avoid modulo bias, ensuring a statistically fair distribution of all possible characters.</li>
-           <li>Remember to close this page and <strong>clear your clipboard</strong> after pasting the password!</li>
-        </ul>
+		<p><strong>IMPORTANT:</strong> For your own safety, you <em>must</em> inspect the code to verify that it is both trustworthy and correct! Use at your own risk! This is a personal project for educational purposes only!</p>
+        <p>This web page is a single HTML file with no dependencies. It should be downloaded, inspected, and used in a secure offline environment.</p>
+        <p>Remember to close this page and <strong>clear your clipboard</strong> after pasting the password!</p>
 
     </div>
     </main>
@@ -185,7 +200,6 @@
         }
 
 		function toggleLabelColor(checkboxId, labelId) {
-			// Improved contrast colors
 			const labelElement = document.getElementById(labelId);
 			labelElement.style.color = document.getElementById(checkboxId).checked ? '#000000' : '#666666';
 		}
@@ -235,10 +249,10 @@
 				navigator.clipboard.writeText(password).then(() => {
 					alert('Password copied to clipboard!');
 				}).catch(err => {
-					alert('ERROR: Failed to copy password. Please copy it manually.');
+					alert('CLIPBOARD ERROR: Failed to copy password. Please copy it manually.');
 				});
 			} else {
-				alert('ERROR: Failed to copy password. Please copy it manually.');
+				alert('CLIPBOARD ERROR: Failed to copy password. Please copy it manually.');
 			}
 		}
 
