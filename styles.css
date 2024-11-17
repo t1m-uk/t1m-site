@@ -115,7 +115,10 @@ p {
     margin-bottom: 20px;
 }
 
-/* Code styling for light mode (matching guides.css) */
+q {
+    font-style: italic;
+}
+
 code {
     font-family: monospace;
     background: #f4f4f4; /* Light grey for light mode */
