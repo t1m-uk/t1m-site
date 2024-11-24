@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="XXX_PAGE_DESCRIPTION">
+    <meta name="author" content="The Rev. Illusion">
+    <title>Retro</title>
+    
+    <link rel="icon" href="favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon/favicon-512.png" sizes="512x512" type="image/png">
+    <link rel="icon" href="favicon/favicon-192.png" sizes="192x192" type="image/png">
+
+	<!-- Hide the theme-toggle button if JavaScript is disabled. -->
+	<noscript>
+		<style>
+			#theme-toggle { display: none; }
+		</style>
+	</noscript>
+
+    <!-- Add this script before loading the CSS -->
+    <script>
+        (function() {
+            try {
+                const storedTheme = localStorage.getItem('dark');
+                if (storedTheme === '1') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            } catch (e) {
+                console.error('Error accessing localStorage', e);
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <a href="#nonsense" class="skip-link">Skip to content</a>
+        <a href="#stuff" class="skip-link">Skip to useful content</a>
+        <a href="#theme-toggle" class="skip-link">Skip to theme toggle</a>
+        <nav aria-label="Main navigation" role="navigation">
+            <a href="index.html">Ahoy!</a>
+            <a href="arch.html">Arch</a>
+            <a href="lineage.html">Lineage</a>
+            <a href="tools.html">Tools</a>
+            <a href="retro.html" class="active">Retro</a>
+        </nav>
+
+        <button id="theme-toggle"> </button> 
+
+    </header>
+
+    <main id="main-content">
+        <h1>Retro</h1>
+
+        <section>
+            <h2 id="nonsense">Nonsense</h2>
+            <a href="#stuff" aria-label="Skip to useful content">(Skip &darr;)</a>
+
+            <h3>The Lost Generation of Arcadia</h3>
+
+<p>Are ye olde enough to be retro? Do you remember the classic 1980s arcade games like Pac-Man, Space Invaders, and Donkey Kong?</p>
+
+<p>These coin-operated arcade machines were only popular for a decade or two, but represent an important era when inventive game-play
+and ingenious programming launched us into distant worlds created with incredibly limited hardware (by today's standards).</p>
+
+<p>The original version of
+<a href="https://en.wikipedia.org/wiki/Pac-Man#Technology" target="_blank" rel="noopener noreferrer">Pac-Man used a ~3 MHz processor, 16 KB ROM, and 3 KB of RAM</a>.
+Very roughly, a modern PC has a CPU that runs a thousand times faster, and can access about four million times as much RAM!
+And that's not to mention countless other improvements in motherboard and CPU design over the years.</p>
+
+<p>Sadly, these old machines will eventually fail. Fortunately great wizards and techno-historians have painstakingly documented or
+reverse-engineered the circuit designs and ROMs, allowing modern PCs (and other devices) to emulate old hardware. Thus
+ensuring our history is not lost forever!</p>
+
+<h3>Not Legal Advice</h3>
+
+<p>Copyright, trademark, and patent laws vary wildly across the globe. So nothing here is legal advice. But, in general, it
+seems to be perfectly legal to download and use hardware emulators. For example, MAME is a well-respected project
+that provides free arcade machine hardware emulators.</p>
+
+<p>However, acquiring game ROM data is a much greyer legal area. In general, copyright laws prohibit unauthorised copying
+of game ROMs. In some jurisdictions the right to make personal backups or format-shift legitimately acquired media
+is protected in law. And some regions are more relaxed about non-profit educational use, or historical archiving.</p>
+
+<p>I will <strong>NOT</strong> provide any links to download MAME ROM packs or copyrighted games. Fortunately, there are a few
+modern free and open-source games that are a great way to demonstrate MAME's hardware emulation without any legal issues.</p>
+
+<h4>Not Legal Advice (from ChatGPT)</h4>
+
+<p>I thought it strange that hardware ROMs can be copied and emulated freely, yet game ROMs are subject to stricter copyright.
+I asked ChatGPT-4o why, and got a very <em>plausible</em> explanation:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<article>
+    
+    <details>
+		<summary>Click for ChatGPT-4o's response...</summary>
+		
+        <p>Your question delves into a nuanced area of intellectual property law. The legality of reverse-engineering and copying game ROMs hinges on several factors,
+		including jurisdiction, intent, and the specific protections applied to different components of arcade systems.</p>
+        
+        <h2>1. Reverse-Engineering and Copyright</h2>
+        <p>Reverse-engineering is generally legal in many jurisdictions under specific conditions, such as:</p>
+        <ul>
+            <li><b>Fair Use (or Fair Dealing in the UK):</b> Reverse-engineering for purposes like research, education, or interoperability may fall under fair use/dealing exceptions.</li>
+            <li><b>Preservation and Interoperability:</b> Projects like MAME argue their work is for archival or compatibility purposes, ensuring that old hardware designs aren't lost to history.</li>
+            <li><b>Non-Copying of Protected Works:</b> When contributors reverse-engineer arcade systems, they are recreating the hardware's functionality without directly copying copyrighted blueprints or schematics. This does not necessarily violate copyright law because:
+                <ul>
+                    <li>Functional aspects (e.g., hardware design) are often protected by patents, not copyright.</li>
+                    <li>Patents typically expire after 20 years, meaning many original arcade hardware designs are no longer protected.</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>2. Why ROMs Are Treated Differently</h2>
+        <p>Game ROMs, by contrast, are subject to copyright because:</p>
+        <ul>
+            <li><b>Creative Expression:</b> Unlike hardware, the data stored in ROMs (game code, graphics, sounds) represents the creative and intellectual work of developers. Copyright law protects this kind of creative content.</li>
+            <li><b>Direct Copying:</b> Extracting or distributing game ROMs involves duplicating the original copyrighted work, which is explicitly prohibited without permission.</li>
+        </ul>
+        <h2>3. MAME’s Legal Stance</h2>
+        <p>The MAME project itself adheres to certain principles to avoid legal issues:</p>
+        <ul>
+            <li><b>Focus on Emulation:</b> MAME emulates hardware but does not distribute ROMs, ensuring its legality in most jurisdictions.</li>
+            <li><b>Use of Public Domain or Licensed ROMs:</b> MAME officially supports ROMs that are either in the public domain, explicitly licensed for free use, or used with permission.</li>
+        </ul>
+        <h2>4. Why Is Reverse-Engineering Sometimes Permitted?</h2>
+        <p>Courts have historically allowed reverse-engineering for purposes like:</p>
+        <ul>
+            <li><b>Interoperability:</b> Reverse-engineering is often allowed to make new software or hardware compatible with old systems (e.g., designing emulators).</li>
+            <li><b>Preservation:</b> Projects focused on cultural or historical preservation (like MAME) may be seen more favourably than those aiming to profit.</li>
+        </ul>
+        <h2>5. Jurisdictional Differences</h2>
+        <p>Laws vary by region. For example:</p>
+        <ul>
+            <li><b>United States:</b> The Digital Millennium Copyright Act (DMCA) includes provisions allowing reverse-engineering in specific circumstances, but distributing ROMs is still prohibited.</li>
+            <li><b>European Union and UK:</b> Similar protections exist for reverse-engineering for interoperability, but unauthorised copying of ROMs remains illegal.</li>
+            <li><b>Japan:</b> Copyright law is stricter, with fewer allowances for reverse-engineering.</li>
+        </ul>
+        
+        
+        <h2>Summary</h2>
+		<p>Reverse-engineering arcade hardware generally does not infringe copyright law because it focuses on replicating functional designs that may no longer be protected. Game ROMs, however, are copyrighted as creative works, and copying them without permission is usually illegal.</p>
+		<p>MAME walks a fine line by focusing on emulation and explicitly avoiding unauthorised ROM distribution. This approach allows the project to operate legally while contributing to the preservation of gaming history.</p>
+        
+        
+    </details>
+</article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>What is MAME?</h3>
+
+<p>According to the <a href="https://www.mamedev.org/" target="_blank" rel="noopener noreferrer">official MAME website</a>,
+MAME was originally an abbreviation of Multiple Arcade Machine Emulator.
+These days, it has become a multi-purpose emulation framework for many other vintage devices.</p>
+
+<p>MAME is constantly evolving. Newer versions emulate newer hardware, but require significant system resources.
+Unlike most software, running the latest version of MAME is a huge mistake (if you're not a developer)!
+Much older versions of MAME are <em>perfect</em> for old hardware.</p>
+
+<p>With MAME 0.37b11, even a 30 year old desktop PC (like a 266 MHz Pentium III with 16 MB of RAM) would be up to the job!
+Or, with MAME4droid, old Android phones (like the Samsung Galaxy S2, released in 2011) can transform a useless
+bit of junk into a powerful handheld gaming system that would have been unimaginable in the 1980s!</p>
+
+<h4>MAME ROM Managers</h4>
+
+<p>It's important to note that MAME versions and game ROM versions have to match precisely. If you have, say, MAME 0.139u1,
+then you need game ROMs that match that exact version. This is an area of much confusion for newbies! The solution is to
+use a ROM manager.</p>
+
+<p>A ROM manager requires a .DAT file that relates to your specific MAME version. It can then modify any game ROM files
+you have accordingly, identify missing components, and create functioning game ROMs that match your MAME version.</p>
+
+<h3>8-bit Micros</h3>
+
+<p>Maybe you had an 8-bit micro-computer, such as a ZX Spectrum, Commodore 64, or Amstrad CPC, and played games like Jet Set Willy,
+Arkanoid, Chase HQ, and Ikari Warriors? Maybe you played Ian Bond's text-based adventure games, like Island and The Base, or
+used PAW (the Professional Adventure Writer) or GAC (the Graphic Adventure Creator) to create your own adventures?
+The limited simplicity of these old computers made programming accessible; a generation of kids learnt to code!</p>
+
+<p>In my mind, the Amstrad CPC6128 was the pinnacle of 8-bit computing (and not only because I owned one). It had a built-in
+disc drive, making it quick, easy, and reliable to save and load your own programs. The instruction manual was a work of art.
+It explained, in clear simple terms how to use a home computer. A reference section listed every BASIC command.
+The appendices listed code for simple games and databases. It ran CPM; it was MIDI compatible; you could attach a mouse, joystick, stereo,
+printer, EEPROMS, or the classic Multiface-II which allowed you to pause time, and use a hex-editor to directly modify
+any part of the memory!</p>
+
+<p>Again, there are several emulators that mimic that classic 8-bit experience. These home computers don't even need
+copyright games to be fun. Most had a BASIC interpreter built-in, so you can fire one up and start writing code
+straight away!</p>
+
+
+
+            <picture>
+                <source srcset="images_main/retro.webp" type="image/webp">
+                <img src="images_main/retro.jpg" alt="1950s style lithographic image of a boy on a bar stool playing a 1980s arcade game." width="1024" height="1024" class="responsive-image">
+            </picture>
+
+        </section>
+
+<hr>
+
+        <section id="stuff">
+            <h2>Stuff</h2>
+
+            <p>XXX-STUFF</p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 The Rev. Illusion<br><a href="index.html#disclaimer">Disclaimer</a></p>
+    </footer>
+
+    <script src="theme-toggle.js"></script>
+
+</body>
+</html>
