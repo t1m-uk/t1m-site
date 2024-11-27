@@ -11,26 +11,83 @@
 /* === 2. ROOT VARIABLES AND THEMES === */
 /* ==================================== */
 
+/* This CSS uses hard-coded in-line colours for the default "light theme". 
+ * The theme-toggle button requires JavaScript. When "dark theme" is
+ * selected, a LocalStorage entry sets the data-theme to "dark". The
+ * CSS code below uses variables for dark mode colours. This ensures
+ * backwards-compatibility (with only light theme) for browsers that
+ * do not support CSS variables and/or JavaScript. */
+
+
 /* Default light theme variables */
+/* These root variables will soon be hard-coded: */
 :root {
     --bg-color: #ffffff;
     --text-color: #2a2a2a;
     --link-color: #004080;
+    --link-hover: #0056b3;
+    --link-focus: #000000;
     --nav-bg-color: #000000;
     --nav-text-color: #ffffff;
+	/* next 3 are same in dark mode!!! */
+        --nav-link-hover-color: #ff56b3;
+	--nav-link-focus-color: #80d8ff;
+	--nav-link-focus-outline: #80d8ff;
+    
     --footer-bg-color: #f4f4f4;
     --border-color: #ddd;
-}
+    --code-bg-color: #000000;
+    --code-text-color: #f4f4f4;
+    --pre-bg-color: #f4f4f4;
+    --pre-text-color: #000000;
+    --input-bg-color: #f4f4f4;
+    --input-text-color: #000000;
+
+    --button-bg-color: #007bff;
+    --button-color: #fff;
+    --button-hover-bg-color: #0056b3;
+    --button-focus-bg-color: #0056b3;
+
+    --theme-button-bg-color: #007bff;
+    --theme-button-color: #fff;
+    --theme-button-hover-bg-color: #0056b3;
+    --theme-button-focus-bg-color: #0056b3;
+
+} 
 
 /* Dark theme variables*/
 [data-theme="dark"] {
     --bg-color: #1e1e1e;
     --text-color: #e0e0e0;
     --link-color: #80d8ff;
+    --link-hover: #a3e0ff;
+    --link-focus: #80d8ff;
     --nav-bg-color: #333333;
     --nav-text-color: #e0e0e0;
+	/* next 3 are same as light mode default!!! */
+       --nav-link-hover-color: #ff56b3;
+       --nav-link-focus-color: #80d8ff;
+       --nav-link-focus-outline: #80d8ff;
+
     --footer-bg-color: #333333;
     --border-color: #444;
+    --code-bg-color: #2b2b2b;
+    --code-text-color: #e0e0e0;
+    --pre-bg-color: #2b2b2b;
+    --pre-text-color: #e0e0e0;
+    --input-bg-color: #2b2b2b;
+    --input-text-color: #e0e0e0;
+
+    --button-bg-color: #444;
+    --button-color: #e0e0e0;
+    --button-hover-bg-color: #555;
+    --button-focus-bg-color: #555;
+
+    --theme-button-bg-color: #444;
+    --theme-button-color: #e0e0e0;
+    --button-hover-bg-color: #555;
+    --button-focus-bg-color: #555;
+
 }
 
 /* ======================== */
@@ -43,8 +100,12 @@ body {
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: var(--bg-color); /* Uses theme variable */
-    color: var(--text-color); /* Uses theme variable */
+    background-color: #ffffff;
+    color: #2a2a2a;
+}
+[data-theme="dark"] body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
 }
 
 /* Ensure HTML5 elements display correctly in older browsers */
@@ -52,13 +113,30 @@ header, section, main, footer {
     display: block;
 }
 
-/* Global link styling */
 a {
+    color: #004080;
+}
+
+[data-theme="dark"] a {
     color: var(--link-color);
 }
 
-a:hover, a:focus {
+a:hover {
     text-decoration: underline;
+    color: #0074d9;
+}
+
+[data-theme="dark"] a:hover {
+    color: var(--link-hover);
+}
+
+a:focus {
+    text-decoration: underline;
+    outline: 2px solid #000000;
+}
+
+[data-theme="dark"] a:focus {
+	outline: 2px solid var(--link-focus);
 }
 
 /* Responsive images */
@@ -76,6 +154,10 @@ h1 {
     text-align: center;
     font-size: 2em;
     margin-top: 20px;
+    color: #2a2a2a;
+}
+
+[data-theme="dark"] h1 {
     color: var(--text-color);
 }
 
@@ -101,22 +183,33 @@ q {
 
 code {
     font-family: monospace;
-    background: #f4f4f4; /* Light grey for light mode */
-    color: #000000; /* Pure black text */
     padding: 2px 4px;
     border-radius: 3px;
+    background: #f4f4f4;
+    color: #000000;
+}
+
+[data-theme="dark"] code {
+    background: var(--code-bg-color);
+    color: var(--code-text-color);
 }
 
 pre {
-    background: #f4f4f4; /* Light grey for light mode */
     padding: 10px;
-    border: 1px solid #ddd;
     overflow-x: auto;
+    border: 1px solid #ddd;
+	background: #f4f4f4;
+    color: #000000;
+}
+
+[data-theme="dark"] pre {
+    border: 1px solid var(--border-color);
+    background: var(--pre-bg-color);
+	color: var(--pre-text-color);
 }
 
 pre code {
     display: block;
-    color: #000000; /* Pure black for contrast */
 }
 
 /* =============================================== */
@@ -125,33 +218,70 @@ pre code {
 
 /* Navigation styling */
 nav {
-    background-color: var(--nav-bg-color);
-    padding: 10px;
-    text-align: center;
+	position: fixed;       /* Fixes the nav bar to the viewport */
+    top: 0;                /* Positions it at the top of the viewport */
+    left: 0;               /* Positions it at the left edge */
+    width: 100%;           /* Ensures the nav bar spans the full width */
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+	justify-content: space-between;
+    z-index: 1000;
+    background-color: #000000;
+}
+
+[data-theme="dark"] nav {
+	background-color: var(--nav-bg-color);
 }
 
 nav a {
-    color: var(--nav-text-color);
     text-decoration: none;
-    margin: 0 15px;
+    margin: 0 10px;
     font-weight: bold;
     padding: 8px 12px;
     display: inline-block;
 	border-radius: 4px;
+	color: #ffffff;
 }
 
-nav a:hover, nav a:focus {
+[data-theme="dark"] nav a {
+	color: var(--nav-text-color);
+}
+
+nav a:hover {
     text-decoration: underline;
+    color: #ff56b3;
 }
 
-/* Invert colours on selected/active navigation link */
+[data-theme="dark"] nav a:hover {
+    color: var(--nav-link-hover-color);
+}
+
+nav a:focus {
+	outline-offset: 2px;
+	outline: 2px solid #80d8ff;
+}
+
+[data-theme="dark"] nav a:focus {
+	outline: 2px solid var(--nav-link-focus-outline);
+}
+
+/* Invert colours on active nav link */
 nav a.active {
+    color: #000000;
+    background-color: #ffffff;
+}
+
+[data-theme="dark"] nav a.active {
     color: var(--nav-bg-color);
     background-color: var(--nav-text-color);
 }
 
 main {
-    padding: 20px;
+    padding-top: 80px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
     max-width: 900px;
     margin: 0 auto;
     text-align: left;
@@ -160,8 +290,12 @@ main {
 footer {
     padding: 10px;
     text-align: center;
-    background-color: var(--footer-bg-color);
     margin-top: 30px;
+    background-color: #f4f4f4;
+}
+
+[data-theme="dark"] footer {
+    background-color: var(--footer-bg-color);
 }
 
 /* =========================== */
@@ -172,62 +306,114 @@ footer {
 input[type="text"],
 textarea {
     padding: 8px;
-    border: 1px solid #ccc;
     border-radius: 4px;
     width: 100%;
     margin-right: 10px;
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+    color: #000000;
+}
+
+[data-theme="dark"] input[type="text"],
+[data-theme="dark"] textarea {
+    border: 1px solid var(--border-color);
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
+
 }
 
 /* Checkboxes and radio buttons */
 input[type="checkbox"],
 input[type="radio"] {
     margin-right: 10px;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    color: #2a2a2a;
+}
+
+[data-theme="dark"] input[type="checkbox"],
+[data-theme="dark"] input[type="radio"] {
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+input:focus,
+textarea:focus {
+    outline-offset: 2px;
+    outline: 2px solid #80d8ff;
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus {
+    outline: 2px solid var(--nav-link-focus-outline);
 }
 
 /* ================== */
 /* === 7. BUTTONS === */
 /* ================== */
 
-/* Basic button styles */
+/* Default button styles */
 button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
 }
 
-button:hover, button:focus {
+[data-theme="dark"] button {
+    background-color: var(--button-bg-color);
+    color: var(--button-color);
+}
+
+button:hover { /* inherit default text color from button */
     background-color: #0056b3;
+}
+[data-theme="dark"] button:hover {
+    background-color: var(--button-hover-bg-color);
+}
+
+button:focus { /* inherit default text color from button */
+    background-color: #0056b3;
+}
+[data-theme="dark"] button:focus {
+    background-color: var(--button-focus-bg-color);
 }
 
 /* Styles for the Toggle button */
-#theme-toggle {
-	float: right;
-    margin-top: 15px;
-    margin-right: 15px;
-    font-size: 1.8em;
-    line-height: 1;
-    display: flex;    
-    align-items: center;
-    justify-content: center;
+nav #theme-toggle {
+    position: static;            /* Remove fixed positioning */
+    margin: 0;                   /* Remove external margins */
+    font-size: 1em;              /* Adjust font size to match the nav links */
+    padding: 8px 12px;           /* Adjust padding if needed */
+    border-radius: 4px;          /* Retain rounded corners */
+    cursor: pointer;             /* Ensure it remains clickable */
     background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    color: #fff;
 }
 
-#theme-toggle:hover {
+[data-theme="dark"] nav #theme-toggle {
+	/* Button looks the same in dark theme */
+}
+
+nav #theme-toggle:hover {
     background-color: #0056b3;
 }
 
-#theme-toggle:focus {
+[data-theme="dark"] nav #theme-toggle:hover {
+    /* Button hover looks the same in dark theme */
+}
+
+nav #theme-toggle:focus {
 	background-color: #0056b3;
-    outline: 2px solid #80d8ff; /* Light cyan focus outline for better visibility */
-    outline-offset: 2px; /* Adds space between the outline and the element */
+    outline: 2px solid #80d8ff;
+    outline-offset: 2px;
+}
+
+[data-theme="dark"] #theme-toggle:focus {
+    outline: 2px solid var(--nav-link-focus-outline);
 }
 
 /* ===================== */
@@ -258,10 +444,15 @@ button:hover, button:focus {
 details {
     margin: 20px 0;
     padding: 15px;
-    background-color: var(--bg-color);
+    background-color: #f5f5f5;
     border: 1px solid var(--border-color);
 	border-radius: 4px;
     color: var(--text-color);
+}
+
+[data-theme="dark"] details {
+    background-color: #2b2b2b; /* Dark grey */
+    border-color: #555; /* Slightly lighter border for contrast */
 }
 
 summary {
@@ -271,6 +462,10 @@ summary {
 
 details summary {
     padding-inline-start: 15px;
+}
+
+[data-theme="dark"] details summary {
+    color: #e0e0e0; /* Light text */
 }
 
 details summary + p { /* Applies to the first paragraph in details summary */
@@ -283,33 +478,64 @@ summary:hover, summary:focus {
     outline-offset: 2px;
 }
 
+[data-theme="dark"] summary:focus {
+	outline: 2px solid #80d8ff;
+}
+
 details[open] {
-    background-color: var(--bg-color);
+/*    background-color: var(--bg-color); */
+    background-color: #f5f5f5;
+}
+
+[data-theme="dark"] details[open] {
+    background-color: #2b2b2b;
 }
 
 details > *:not(summary) {
     margin-top: 10px;
-    color: var(--text-color);
-    background-color: var(--bg-color);
+    color: #333333;
+    background-color: #f5f5f5;
 }
+
+[data-theme="dark"] details[open] > *:not(summary) {
+    color: #e0e0e0; /* Light text for expanded content */
+    background-color: #2b2b2b;
+    border-radius: 4px;
+}
+
 
 details ul li, details ol li {
     margin-top: 8px;
 }
+
+
 
 /* =================================== */
 /* === 10. FOCUS AND ACCESSIBILITY === */
 /* =================================== */
 
 /* Simple fallback for focus styles to support keyboard navigation */
-a:focus, button:focus, input:focus {
+a:focus,
+button:focus,
+input:focus {
     outline: 2px solid #000; /* Black focus outline in light mode */
-	outline-offset: 1px;
+	outline-offset: 2px;
 }
+
+[data-theme="dark"] a:focus,
+[data-theme="dark"] button:focus,
+[data-theme="dark"] input:focus {
+    outline: 2px solid #80d8ff;
+}
+
 
 /* Focus styles for navigation links in light mode */
 nav a:focus {
-    outline: 2px solid #80d8ff; /* Light cyan focus outline for better visibility in light mode */
+    outline: 2px solid #80d8ff; /* Light cyan focus outline in light mode */
+}
+
+[data-theme="dark"] nav a:focus {
+	outline: 2px solid #80d8ff;
 }
 
 /* Focus styles for radio buttons and checkboxes */
@@ -319,76 +545,12 @@ input[type="radio"]:focus, input[type="checkbox"]:focus {
 
 /* =========================== */
 /* === 11. DARK-MODE THEME === */
-/* =========================== */
-
-/* Focus styles for dark mode */
-[data-theme="dark"] a:focus,
-[data-theme="dark"] button:focus,
-[data-theme="dark"] input:focus,
-[data-theme="dark"] nav a:focus,
-[data-theme="dark"] #theme-toggle:focus,
-[data-theme="dark"] summary:focus {
-    outline: 2px solid #80d8ff;
-    outline-offset: 1px;
-}
-
-/* Dark mode hover state for links */
-[data-theme="dark"] a:hover {
-    color: #a3e0ff; /* Slightly brighter cyan on hover */
-}
+/* ======= (moved) =========== */
 
 
 
-/* Enhanced focus visibility for nav links in dark mode */
-[data-theme="dark"] nav a:focus {
-    text-decoration: underline;
-}
 
-/* Dark mode variation for code blocks */
-[data-theme="dark"] code {
-    background: #333333;
-    color: #e0e0e0;
-}
-[data-theme="dark"] pre {
-    background: #2b2b2b;
-    border: 1px solid #444444;
-    color: #e0e0e0;
-}
 
-[data-theme="dark"] button {
-    background-color: #444444; /* Darker button background */
-    color: #e0e0e0; /* Light text */
-}
-
-[data-theme="dark"] button:hover, [data-theme="dark"] button:focus {
-    background-color: #555555; /* Slightly lighter on hover/focus */
-}
-/* Dark mode variation for all inputs, text areas, checkboxes, and radio buttons */
-[data-theme="dark"] input[type="text"], [data-theme="dark"] textarea,
-[data-theme="dark"] input[type="checkbox"], [data-theme="dark"] input[type="radio"] {
-    background-color: #2b2b2b;
-    color: #e0e0e0;
-    border: 1px solid #444444;
-}
-
-[data-theme="dark"] details {
-    background-color: #333; /* Dark grey */
-    border-color: #555; /* Slightly lighter border for contrast */
-}
-
-[data-theme="dark"] details summary {
-    color: #e0e0e0; /* Light text */
-}
-
-[data-theme="dark"] details[open] {
-    background-color: #333;
-}
-
-[data-theme="dark"] details[open] > *:not(summary) {
-    color: #e0e0e0; /* Light text for expanded content */
-    background-color: #333; /* Match the container background */
-    border-radius: 4px; /* Optional: Add rounding for visual consistency */
-}
 
 /* =========================================== */
 /* === 12. MEDIA QUERIES FOR SMALL SCREENS === */
@@ -405,7 +567,7 @@ input[type="radio"]:focus, input[type="checkbox"]:focus {
     }
 
     nav a {
-        padding: 6px 8px;
+        padding: 8px 12px;
         margin: 0 5px;
     }
 }
