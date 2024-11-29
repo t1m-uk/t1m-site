@@ -7,69 +7,76 @@
     box-sizing: border-box;
 }
 
-/* ==================================== */
-/* === 2. ROOT VARIABLES AND THEMES === */
-/* ==================================== */
+/* =================================== */
+/* === 2. DARK THEME CSS VARIABLES === */
+/* =================================== */
 
-/* This CSS uses hard-coded in-line colours for the default "light theme". 
- * The theme-toggle button requires JavaScript. When "dark theme" is
- * selected, a LocalStorage entry sets the data-theme to "dark". The
- * CSS code below uses variables for dark mode colours. This ensures
- * backwards-compatibility (with only light theme) for browsers that
- * do not support CSS variables and/or JavaScript. */
+/* This CSS uses hard-coded/in-line colours for the default "light theme", for
+ * basic compatibility when JavaScript and/or CSS variables are not supported.
+ *
+ * The theme-toggle button is only visible when JavaScript is enabled.
+ * If "dark theme" is selected, a LocalStorage entry sets the data-theme to "dark".
+ * If "light theme" is re-selected, the LocalStorage entry is deleted.
+ * 
+ * DEFAULT LIGHT THEME:
 
-
-/* Default light theme variables */
-/* These root variables will soon be hard-coded: */
 :root {
-    --bg-color: #ffffff;
+    --bg-color: #fff;
     --text-color: #2a2a2a;
+
     --link-color: #004080;
     --link-hover: #0056b3;
-    --link-focus: #000000;
-    --nav-bg-color: #000000;
-    --nav-text-color: #ffffff;
-	/* next 3 are same in dark mode!!! */
-        --nav-link-hover-color: #ff56b3;
-	--nav-link-focus-color: #80d8ff;
-	--nav-link-focus-outline: #80d8ff;
+    --link-focus: #000;
+
+    --nav-bg-color: #000;
+    --nav-text-color: #fff;
+    --nav-link-hover-color: #ff56b3;
+    --nav-link-focus-color: #80d8ff;
+    --nav-link-focus-outline: #80d8ff;
     
     --footer-bg-color: #f4f4f4;
     --border-color: #ddd;
-    --code-bg-color: #000000;
+    --code-bg-color: #000;
     --code-text-color: #f4f4f4;
     --pre-bg-color: #f4f4f4;
-    --pre-text-color: #000000;
+    --pre-text-color: #000;
     --input-bg-color: #f4f4f4;
-    --input-text-color: #000000;
+    --input-text-color: #000;
+    
+    --details-bg-color: #f5f5f5;
+    --details-open-bg-color: #f5f5f5;
+    --details-text-color: #2a2a2a;
+    --details-not-summary-bg-color: #f5f5f5;
+    --details-not-summary-text-color: #333333;
 
     --button-bg-color: #007bff;
     --button-color: #fff;
     --button-hover-bg-color: #0056b3;
     --button-focus-bg-color: #0056b3;
+    --button-focus-outline-color: #000;
 
     --theme-button-bg-color: #007bff;
     --theme-button-color: #fff;
     --theme-button-hover-bg-color: #0056b3;
     --theme-button-focus-bg-color: #0056b3;
-
-} 
+} */
 
 /* Dark theme variables*/
 [data-theme="dark"] {
     --bg-color: #1e1e1e;
     --text-color: #e0e0e0;
+
     --link-color: #80d8ff;
     --link-hover: #a3e0ff;
     --link-focus: #80d8ff;
-    --nav-bg-color: #333333;
-    --nav-text-color: #e0e0e0;
-	/* next 3 are same as light mode default!!! */
-       --nav-link-hover-color: #ff56b3;
-       --nav-link-focus-color: #80d8ff;
-       --nav-link-focus-outline: #80d8ff;
 
-    --footer-bg-color: #333333;
+    --nav-bg-color: #333;
+    --nav-text-color: #e0e0e0;
+    --nav-link-hover-color: #ff56b3;
+    --nav-link-focus-color: #80d8ff;
+    --nav-link-focus-outline: #80d8ff;
+
+    --footer-bg-color: #333;
     --border-color: #444;
     --code-bg-color: #2b2b2b;
     --code-text-color: #e0e0e0;
@@ -77,30 +84,35 @@
     --pre-text-color: #e0e0e0;
     --input-bg-color: #2b2b2b;
     --input-text-color: #e0e0e0;
+    
+    --details-bg-color: #2b2b2b;
+    --details-open-bg-color: #2b2b2b;
+    --details-text-color: #e0e0e0;
+    --details-not-summary-bg-color: #2b2b2b;
+    --details-not-summary-text-color: #e0e0e0;
 
     --button-bg-color: #444;
     --button-color: #e0e0e0;
     --button-hover-bg-color: #555;
     --button-focus-bg-color: #555;
+    --button-focus-outline-color: #80d8ff;
 
     --theme-button-bg-color: #444;
     --theme-button-color: #e0e0e0;
-    --button-hover-bg-color: #555;
-    --button-focus-bg-color: #555;
-
+    --theme-button-hover-bg-color: #555;
+    --theme-button-focus-bg-color: #555;
 }
 
-/* ======================== */
-/* === 3. GLOBAL STYLES === */
-/* ======================== */
+/* ========================= */
+/* === 3. PAGE STRUCTURE === */
+/* ========================= */
 
-/* Global body styles */
 body {
     font-family: sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background-color: #fff;
     color: #2a2a2a;
 }
 [data-theme="dark"] body {
@@ -108,10 +120,36 @@ body {
     color: var(--text-color);
 }
 
+main {
+    padding: 80px 20px 20px 20px;
+    padding-left: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+
+footer {
+    padding: 10px;
+    text-align: center;
+    margin-top: 30px;
+    background-color: #f4f4f4;
+}
+
+[data-theme="dark"] footer {
+    background-color: var(--footer-bg-color);
+}
+
 /* Ensure HTML5 elements display correctly in older browsers */
 header, section, main, footer {
     display: block;
 }
+
+
+/* ======================== */
+/* === 4. MAIN ELEMENTS === */
+/* ======================== */
+
 
 a {
     color: #004080;
@@ -132,23 +170,20 @@ a:hover {
 
 a:focus {
     text-decoration: underline;
-    outline: 2px solid #000000;
+    outline-offset: 2px;
+    outline: 2px solid;
+    outline-color: #000;
 }
 
 [data-theme="dark"] a:focus {
-	outline: 2px solid var(--link-focus);
+	outline-color: var(--link-focus);
 }
 
-/* Responsive images */
 img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+    max-width: 100%; /* fit width */
+    height: auto; /* maintain aspect ratio */
+    display: block; /* block element (not in-line for responsive design) */
 }
-
-/* ===================== */
-/* === 4. TYPOGRAPHY === */
-/* ===================== */
 
 h1 {
     text-align: center;
@@ -186,7 +221,7 @@ code {
     padding: 2px 4px;
     border-radius: 3px;
     background: #f4f4f4;
-    color: #000000;
+    color: #000;
 }
 
 [data-theme="dark"] code {
@@ -199,7 +234,7 @@ pre {
     overflow-x: auto;
     border: 1px solid #ddd;
 	background: #f4f4f4;
-    color: #000000;
+    color: #000;
 }
 
 [data-theme="dark"] pre {
@@ -212,11 +247,10 @@ pre code {
     display: block;
 }
 
-/* =============================================== */
-/* === 5. LAYOUT: NAVIGATION, MAIN, AND FOOTER === */
-/* =============================================== */
+/* ========================== */
+/* === 5. NAVIGATION MENU === */
+/* ========================== */
 
-/* Navigation styling */
 nav {
 	position: fixed;       /* Fixes the nav bar to the viewport */
     top: 0;                /* Positions it at the top of the viewport */
@@ -227,7 +261,7 @@ nav {
     align-items: center;
 	justify-content: space-between;
     z-index: 1000;
-    background-color: #000000;
+    background-color: #000;
 }
 
 [data-theme="dark"] nav {
@@ -259,17 +293,18 @@ nav a:hover {
 
 nav a:focus {
 	outline-offset: 2px;
-	outline: 2px solid #80d8ff;
+	outline: 2px solid;
+	outline-color: #80d8ff;
 }
 
 [data-theme="dark"] nav a:focus {
-	outline: 2px solid var(--nav-link-focus-outline);
+	outline-color: var(--nav-link-focus-outline);
 }
 
 /* Invert colours on active nav link */
 nav a.active {
-    color: #000000;
-    background-color: #ffffff;
+    color: #000;
+    background-color: #fff;
 }
 
 [data-theme="dark"] nav a.active {
@@ -277,76 +312,59 @@ nav a.active {
     background-color: var(--nav-text-color);
 }
 
-main {
-    padding-top: 80px;
-    padding-right: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: left;
-}
-
-footer {
-    padding: 10px;
-    text-align: center;
-    margin-top: 30px;
-    background-color: #f4f4f4;
-}
-
-[data-theme="dark"] footer {
-    background-color: var(--footer-bg-color);
-}
-
 /* =========================== */
 /* === 6. FORMS AND INPUTS === */
 /* =========================== */
 
-/* Text inputs and textareas */
 input[type="text"],
 textarea {
     padding: 8px;
     border-radius: 4px;
     width: 100%;
     margin-right: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid;
+    border-color: #ddd;
     background-color: #f4f4f4;
-    color: #000000;
+    color: #000;
 }
 
 [data-theme="dark"] input[type="text"],
 [data-theme="dark"] textarea {
-    border: 1px solid var(--border-color);
+    border-color: var(--border-color);
     background-color: var(--input-bg-color);
     color: var(--input-text-color);
-
 }
 
-/* Checkboxes and radio buttons */
 input[type="checkbox"],
 input[type="radio"] {
     margin-right: 10px;
-    border: 1px solid #ddd;
-    background-color: #ffffff;
+    border: 1px solid;
+    border-color: #ddd;
+    background-color: #fff;
     color: #2a2a2a;
 }
 
 [data-theme="dark"] input[type="checkbox"],
 [data-theme="dark"] input[type="radio"] {
-    border: 1px solid var(--border-color);
+    border-color: var(--border-color);
     background-color: var(--bg-color);
     color: var(--text-color);
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
     outline-offset: 2px;
-    outline: 2px solid #80d8ff;
+    outline: 2px solid;
+    outline-color: #80d8ff;
 }
 
 [data-theme="dark"] input:focus,
-[data-theme="dark"] textarea:focus {
-    outline: 2px solid var(--nav-link-focus-outline);
+[data-theme="dark"] textarea:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+    outline-color: var(--nav-link-focus-outline);
 }
 
 /* ================== */
@@ -376,9 +394,13 @@ button:hover { /* inherit default text color from button */
 }
 
 button:focus { /* inherit default text color from button */
+	outline-offset: 2px;
+    outline: 2px solid;
+    outline-color: #000;
     background-color: #0056b3;
 }
 [data-theme="dark"] button:focus {
+    outline-color: var(--button-focus-outline-color);
     background-color: var(--button-focus-bg-color);
 }
 
@@ -395,7 +417,7 @@ nav #theme-toggle {
 }
 
 [data-theme="dark"] nav #theme-toggle {
-	/* Button looks the same in dark theme */
+	/* Theme-toggle button looks the same in dark theme! */
 }
 
 nav #theme-toggle:hover {
@@ -407,23 +429,23 @@ nav #theme-toggle:hover {
 }
 
 nav #theme-toggle:focus {
-	background-color: #0056b3;
-    outline: 2px solid #80d8ff;
     outline-offset: 2px;
+    outline: 2px solid;
+    outline-color: #80d8ff;    
+	background-color: #0056b3;
 }
 
 [data-theme="dark"] #theme-toggle:focus {
-    outline: 2px solid var(--nav-link-focus-outline);
-}
+    outline-color: var(--nav-link-focus-outline);
+ }
 
 /* ===================== */
 /* === 8. SKIP LINKS === */
 /* ===================== */
 
-/* Skip Link (Hidden until focused) */
 .skip-link {
     position: absolute;
-    left: -999px;
+    left: -999px; /* Hidden until focused */
     top: -999px;
 }
 
@@ -444,15 +466,16 @@ nav #theme-toggle:focus {
 details {
     margin: 20px 0;
     padding: 15px;
-    background-color: #f5f5f5;
-    border: 1px solid var(--border-color);
 	border-radius: 4px;
-    color: var(--text-color);
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;    
+    color: #2a2a2a;
 }
 
 [data-theme="dark"] details {
-    background-color: #2b2b2b; /* Dark grey */
-    border-color: #555; /* Slightly lighter border for contrast */
+    border: 1px solid var(--border-color);
+    background-color: var(--details-bg-color);
+    color: var(--details-text-color);
 }
 
 summary {
@@ -464,43 +487,42 @@ details summary {
     padding-inline-start: 15px;
 }
 
-[data-theme="dark"] details summary {
-    color: #e0e0e0; /* Light text */
-}
-
-details summary + p { /* Applies to the first paragraph in details summary */
+details summary + * { /* Applies to the first sub-tag within details summary */
     margin-top: 30px;
 }
 
+
 summary:hover, summary:focus {
     text-decoration: underline;
-    outline: 2px solid #80d8ff;
     outline-offset: 2px;
+    outline: 2px solid;
+    outline-color: #80d8ff;
 }
 
 [data-theme="dark"] summary:focus {
-	outline: 2px solid #80d8ff;
+	outline-color: var(--nav-link-focus-outline);
 }
 
+
 details[open] {
-/*    background-color: var(--bg-color); */
     background-color: #f5f5f5;
 }
 
 [data-theme="dark"] details[open] {
-    background-color: #2b2b2b;
+    background-color: var(--details-open-bg-color);
 }
+
 
 details > *:not(summary) {
     margin-top: 10px;
+    border-radius: 4px;
     color: #333333;
     background-color: #f5f5f5;
 }
 
 [data-theme="dark"] details[open] > *:not(summary) {
-    color: #e0e0e0; /* Light text for expanded content */
-    background-color: #2b2b2b;
-    border-radius: 4px;
+    color: var(--details-not-summary-text-color);
+    background-color: var(--details-not-summary-bg-color);
 }
 
 
@@ -508,62 +530,18 @@ details ul li, details ol li {
     margin-top: 8px;
 }
 
-
-
-/* =================================== */
-/* === 10. FOCUS AND ACCESSIBILITY === */
-/* =================================== */
-
-/* Simple fallback for focus styles to support keyboard navigation */
-a:focus,
-button:focus,
-input:focus {
-    outline: 2px solid #000; /* Black focus outline in light mode */
-	outline-offset: 2px;
-}
-
-[data-theme="dark"] a:focus,
-[data-theme="dark"] button:focus,
-[data-theme="dark"] input:focus {
-    outline: 2px solid #80d8ff;
-}
-
-
-/* Focus styles for navigation links in light mode */
-nav a:focus {
-    outline: 2px solid #80d8ff; /* Light cyan focus outline in light mode */
-}
-
-[data-theme="dark"] nav a:focus {
-	outline: 2px solid #80d8ff;
-}
-
-/* Focus styles for radio buttons and checkboxes */
-input[type="radio"]:focus, input[type="checkbox"]:focus {
-    outline: 2px solid #80d8ff; /* Light cyan focus outline for consistency */
-}
-
-/* =========================== */
-/* === 11. DARK-MODE THEME === */
-/* ======= (moved) =========== */
-
-
-
-
-
-
 /* =========================================== */
-/* === 12. MEDIA QUERIES FOR SMALL SCREENS === */
+/* === 10. MEDIA QUERIES FOR SMALL SCREENS === */
 /* =========================================== */
 
 @media (max-width: 600px) {
     main {
-        padding: 10px;
+        padding: 80px 10px 10px 10px;
         max-width: 100%;
     }
 
     h1, h2 {
-        font-size: 1.8em;
+        font-size: 1.5em;
     }
 
     nav a {
