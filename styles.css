@@ -7,6 +7,11 @@
     box-sizing: border-box;
 }
 
+/* Ensure HTML5 elements display correctly in older browsers */
+header, section, main, footer {
+    display: block;
+}
+
 /* =================================== */
 /* === 2. DARK THEME CSS VARIABLES === */
 /* =================================== */
@@ -27,6 +32,7 @@
     --link-color: #004080;
     --link-hover: #0056b3;
     --link-focus: #000;
+    --link-focus-outline: #80d8ff;
 
     --nav-bg-color: #000;
     --nav-text-color: #fff;
@@ -69,6 +75,7 @@
     --link-color: #80d8ff;
     --link-hover: #a3e0ff;
     --link-focus: #80d8ff;
+    --link-focus-outline: #80d8ff;
 
     --nav-bg-color: #333;
     --nav-text-color: #e0e0e0;
@@ -107,6 +114,10 @@
 /* === 3. PAGE STRUCTURE === */
 /* ========================= */
 
+html {
+    font-size: 16px; /* Default font size -- can use em and rem units for scaling */
+}
+
 body {
     font-family: sans-serif;
     line-height: 1.6;
@@ -121,13 +132,12 @@ body {
 }
 
 main {
-    padding: 80px 20px 20px 20px;
-    padding-left: 20px;
     max-width: 900px;
-    margin: 0 auto;
     text-align: left;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 100px;
 }
-
 
 footer {
     padding: 10px;
@@ -139,12 +149,6 @@ footer {
 [data-theme="dark"] footer {
     background-color: var(--footer-bg-color);
 }
-
-/* Ensure HTML5 elements display correctly in older browsers */
-header, section, main, footer {
-    display: block;
-}
-
 
 /* ======================== */
 /* === 4. MAIN ELEMENTS === */
@@ -185,10 +189,10 @@ img {
     display: block; /* block element (not in-line for responsive design) */
 }
 
-h1 {
+h1 { /* Main page title (Ahoy!, Arch, Lineage, etc.) */
     text-align: center;
-    font-size: 2em;
-    margin-top: 20px;
+    font-size: 3rem;
+    margin-top: 2.75rem;
     color: #2a2a2a;
 }
 
@@ -196,20 +200,19 @@ h1 {
     color: var(--text-color);
 }
 
-h2 {
-    display: inline-block;
-    margin-right: 10px;
-    font-size: 1.5em;
-    margin-top: 20px;
-    margin-bottom: 10px;
+h2 { /* NONSENSE and STUFF headings */
+    display: inline-block; /* Allows the visible "Skip" link next to "Nonsense" h2 header. */
+    margin: 20px 10px 10px 0px;
+    font-size: 2rem;
 }
 
-h2 + a {
+h2 + a { /* The visible "Skip" link next to the "Nonsense" h2 header */
     font-size: 1em;
 }
 
 p {
     margin-bottom: 20px;
+    font-size: 1rem;
 }
 
 q {
@@ -232,13 +235,14 @@ code {
 pre {
     padding: 10px;
     overflow-x: auto;
-    border: 1px solid #ddd;
+    border: 1px solid;
+    border-color: #ddd;
 	background: #f4f4f4;
     color: #000;
 }
 
 [data-theme="dark"] pre {
-    border: 1px solid var(--border-color);
+    border-color: var(--border-color);
     background: var(--pre-bg-color);
 	color: var(--pre-text-color);
 }
@@ -258,8 +262,9 @@ nav {
     width: 100%;           /* Ensures the nav bar spans the full width */
     padding: 10px 15px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-	justify-content: space-between;
+    justify-content: center;
     z-index: 1000;
     background-color: #000;
 }
@@ -270,12 +275,13 @@ nav {
 
 nav a {
     text-decoration: none;
-    margin: 0 10px;
     font-weight: bold;
-    padding: 8px 12px;
     display: inline-block;
 	border-radius: 4px;
-	color: #ffffff;
+    white-space: nowrap; /* Prevent individual link text from wrapping */
+    margin: 5px 10px 5px 10px; /* space between links */
+    padding: 16px 12px; /* Padding required for ARIA min touch area: 48x48 */
+	color: #fff;
 }
 
 [data-theme="dark"] nav a {
@@ -364,7 +370,7 @@ input[type="checkbox"]:focus {
 [data-theme="dark"] textarea:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-    outline-color: var(--nav-link-focus-outline);
+    outline-color: var(--link-focus-outline);
 }
 
 /* ================== */
@@ -405,37 +411,33 @@ button:focus { /* inherit default text color from button */
 }
 
 /* Styles for the Toggle button */
-nav #theme-toggle {
-    position: static;            /* Remove fixed positioning */
-    margin: 0;                   /* Remove external margins */
-    font-size: 1em;              /* Adjust font size to match the nav links */
-    padding: 8px 12px;           /* Adjust padding if needed */
-    border-radius: 4px;          /* Retain rounded corners */
-    cursor: pointer;             /* Ensure it remains clickable */
+nav button#theme-toggle {
+    cursor: pointer;             /* Button can be clicked with mouse */
+    margin: 0 10px 0 0;          /* Only extra space to right */
+    padding: 6px;
+    font-size: 2.25rem;
     background-color: #007bff;
     color: #fff;
 }
 
-[data-theme="dark"] nav #theme-toggle {
-	/* Theme-toggle button looks the same in dark theme! */
-}
+/* Theme-toggle button looks the same in dark theme! */
+/* [data-theme="dark"] nav button#theme-toggle { } */
 
-nav #theme-toggle:hover {
+nav button#theme-toggle:hover {
     background-color: #0056b3;
 }
 
-[data-theme="dark"] nav #theme-toggle:hover {
-    /* Button hover looks the same in dark theme */
-}
+/* Theme-toggle button hover looks the same in dark theme */
+/* [data-theme="dark"] nav button#theme-toggle:hover { } */
 
-nav #theme-toggle:focus {
+nav button#theme-toggle:focus {
     outline-offset: 2px;
     outline: 2px solid;
     outline-color: #80d8ff;    
 	background-color: #0056b3;
 }
 
-[data-theme="dark"] #theme-toggle:focus {
+[data-theme="dark"] button#theme-toggle:focus {
     outline-color: var(--nav-link-focus-outline);
  }
 
@@ -443,19 +445,20 @@ nav #theme-toggle:focus {
 /* === 8. SKIP LINKS === */
 /* ===================== */
 
-.skip-link {
+.skip-link { 
     position: absolute;
     left: -999px; /* Hidden until focused */
     top: -999px;
 }
 
 .skip-link:focus {
-    left: 0;
-    top: 0;
+    z-index: 100; /* Display on top of other objects... */
+    border-radius: 2px;
+    left: 10px;
+    top: 85px;
+    padding: 10px;
     background: #000;
     color: #fff;
-    padding: 10px;
-    z-index: 100;
 }
 
 /* ===================================== */
@@ -467,13 +470,14 @@ details {
     margin: 20px 0;
     padding: 15px;
 	border-radius: 4px;
-    border: 1px solid #ddd;
+    border: 1px solid;
+    border-color: #ddd;
     background-color: #f5f5f5;    
     color: #2a2a2a;
 }
 
 [data-theme="dark"] details {
-    border: 1px solid var(--border-color);
+    border-color: var(--border-color);
     background-color: var(--details-bg-color);
     color: var(--details-text-color);
 }
@@ -487,11 +491,6 @@ details summary {
     padding-inline-start: 15px;
 }
 
-details summary + * { /* Applies to the first sub-tag within details summary */
-    margin-top: 30px;
-}
-
-
 summary:hover, summary:focus {
     text-decoration: underline;
     outline-offset: 2px;
@@ -500,9 +499,8 @@ summary:hover, summary:focus {
 }
 
 [data-theme="dark"] summary:focus {
-	outline-color: var(--nav-link-focus-outline);
+	outline-color: var(--link-focus-outline);
 }
-
 
 details[open] {
     background-color: #f5f5f5;
@@ -511,7 +509,6 @@ details[open] {
 [data-theme="dark"] details[open] {
     background-color: var(--details-open-bg-color);
 }
-
 
 details > *:not(summary) {
     margin-top: 10px;
@@ -525,7 +522,6 @@ details > *:not(summary) {
     background-color: var(--details-not-summary-bg-color);
 }
 
-
 details ul li, details ol li {
     margin-top: 8px;
 }
@@ -535,17 +531,18 @@ details ul li, details ol li {
 /* =========================================== */
 
 @media (max-width: 600px) {
-    main {
-        padding: 80px 10px 10px 10px;
-        max-width: 100%;
+    html {
+        font-size: 14px; /* 2px smaller than default */
     }
-
-    h1, h2 {
-        font-size: 1.5em;
+    
+    main {
+        max-width: 100%; /* Use full width on small screens */
+        padding: 10px; /* Reduce padding */
+        padding-top: 80px; /* But still allow space for nav bar */
     }
 
     nav a {
-        padding: 8px 12px;
         margin: 0 5px;
+        padding: 17px 12px; /* add 1px (17 vs 16) above and below to account for 2px smaller html font size */
     }
 }
