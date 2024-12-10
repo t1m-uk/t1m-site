@@ -41,7 +41,7 @@
         <a href="#nonsense" class="skip-link">Skip to content</a>
         <a href="#stuff" class="skip-link">Skip to useful content</a>
         <a href="#theme-toggle" class="skip-link">Skip to theme toggle</a>
-        <nav aria-label="Main navigation" role="navigation">
+        <nav aria-label="Main navigation">
 			<button id="theme-toggle"> </button> <!-- Text and ARIA label added by JavaScript -->
             <a href="index.html">Ahoy!</a>
             <a href="arch.html">Arch</a>
@@ -63,19 +63,28 @@
 
             <h3>The Lost Generation of Arcadia</h3>
 
-<p>Are ye olde enough to be retro? Do you remember the classic 1980s arcade games like Pac-Man, Space Invaders, and Donkey Kong?</p>
+<p>Are ye olde enough to be retro? Do you remember the classic 1980s arcade games like 
+Pac-Man, Space Invaders, and Donkey Kong?</p>
 
 <p>These coin-operated arcade machines were only popular for a decade or two, but represent an important era when inventive game-play
 and ingenious programming launched us into distant worlds created with incredibly limited hardware (by today's standards).</p>
 
 <p>The original version of
 <a href="https://en.wikipedia.org/wiki/Pac-Man#Technology" target="_blank" rel="noopener noreferrer">Pac-Man used a ~3 MHz processor, 16 KB ROM, and 3 KB of RAM</a>.
-Very roughly, a modern PC has a CPU that runs a thousand times faster, and can access about four million times as much RAM!
+Very roughly, a modern PC might have a CPU that runs a thousand times faster, with four million times as much RAM!
 And that's not to mention countless other improvements in motherboard and CPU design over the years.</p>
 
 <p>Sadly, these old machines will eventually fail. Fortunately great wizards and techno-historians have painstakingly documented or
 reverse-engineered the circuit designs and ROMs, allowing modern PCs (and other devices) to emulate old hardware. Thus
 ensuring our history is not lost forever!</p>
+
+
+            <picture>
+                <source srcset="images_main/retro1.webp" type="image/webp">
+                <img src="images_main/retro1.jpg" alt="A lithographic-style illustration depicting wizard-historians analysing a disassembled arcade game cabinet." width="1024" height="1024" class="responsive-image">
+            </picture>
+
+<hr>
 
 <h3>Not Legal Advice</h3>
 
@@ -83,23 +92,17 @@ ensuring our history is not lost forever!</p>
 seems to be perfectly legal to download and use hardware emulators. For example, MAME is a well-respected project
 that provides free arcade machine hardware emulators.</p>
 
-<p>However, acquiring game ROM data is a much greyer legal area. In general, copyright laws prohibit unauthorised copying
-of game ROMs. In some jurisdictions the right to make personal backups or format-shift legitimately acquired media
+<p>Acquiring game ROM data is a much greyer legal area. In general, copyright laws prohibit unauthorised copying
+of game ROMs. However, in some jurisdictions the right to make personal backups or format-shift legitimately acquired media
 is protected in law. And some regions are more relaxed about non-profit educational use, or historical archiving.</p>
 
-<p>I will <strong>NOT</strong> provide any links to download MAME ROM packs or copyrighted games. Fortunately, there are a few
+<p>I will <strong>NOT</strong> provide any links to download MAME ROM sets or copyrighted games. Fortunately, there are a few
 modern free and open-source games that are a great way to demonstrate MAME's hardware emulation without any legal issues.</p>
 
 <h4>Not Legal Advice (from ChatGPT)</h4>
 
 <p>I thought it strange that hardware ROMs can be copied and emulated freely, yet game ROMs are subject to stricter copyright.
 I asked ChatGPT-4o why, and got a very <em>plausible</em> explanation:</p>
-
-
-
-
-
-
 
 
 
@@ -196,7 +199,7 @@ I asked ChatGPT-4o why, and got a very <em>plausible</em> explanation:</p>
 
 
 
-
+<hr>
 
 
 <h3>What is MAME?</h3>
@@ -206,21 +209,74 @@ MAME was originally an abbreviation of Multiple Arcade Machine Emulator.
 These days, it has become a multi-purpose emulation framework for many other vintage devices.</p>
 
 <p>MAME is constantly evolving. Newer versions emulate newer hardware, but require significant system resources.
-Unlike most software, running the latest version of MAME is a huge mistake (if you're not a developer)!
-Much older versions of MAME are <em>perfect</em> for old hardware.</p>
+Unlike most software, running the latest version of MAME is a huge mistake! Emulating old pre-internet hardware isn't a major security risk;
+you don't need the latest updates to be safe. <em>Much</em> older versions of MAME are <em>perfect</em> for old hardware.</p>
 
-<p>With MAME 0.37b11, even a 30 year old desktop PC (like a 266 MHz Pentium III with 16 MB of RAM) would be up to the job!
-Or, with MAME4droid, old Android phones (like the Samsung Galaxy S2, released in 2011) can transform a useless
-bit of junk into a powerful handheld gaming system that would have been unimaginable in the 1980s!</p>
+<p>With <b>MAME 0.37b11</b>, even a 30 year old desktop PC (like a 266 MHz Pentium III with 16 MB of RAM) would be up to the job!
+Or, with <b>MAME4droid</b>, old Android phones (like the Samsung Galaxy S2, released in 2011) can be transformed from a useless
+bit of junk into a powerful handheld gaming system that would have been unimaginable in the 1980s! Of course, you'd probably want to get
+a USB OTG (on-the-go) cable and connect your favourite USB gamepad or joystick.</p>
+
+<p>While you can run MAME by itself, there are many other projects that use MAME as a backend:</p>
+<ul>
+	<li><b>RetroArch</b> is a front-end (i.e. a user interface) application, providing access to various emulators and media players.</li>
+	<li><b>Batocera.linux</b> is a live OS that can be installed on a USB stick or hard drive. It requires no knowledge of Linux. You simply need to copy the required files (such as game ROMs, BIOSes, etc.) to it.</li>
+	<li><b>KnoppiXMAME</b> is also a live OS, but provides MAME emulation, and must be installed on a bootable CD.</li>
+	<li><b>MAME4droid</b>, as mentioned above, is a MAME frontent for Android devices. </li>
+</ul>
+
+<p>Check out the links below, and rescue an old PC (or phone) today!</p>
+
+
+            <picture>
+                <source srcset="images_main/retro2.webp" type="image/webp">
+                <img src="images_main/retro2.jpg" alt="1950s style lithographic image of a boy on a bar stool playing a 1980s arcade game." width="1024" height="1024" class="responsive-image">
+            </picture>
+<hr>
 
 <h4>MAME ROM Managers</h4>
 
-<p>It's important to note that MAME versions and game ROM versions have to match precisely. If you have, say, MAME 0.139u1,
-then you need game ROMs that match that exact version. This is an area of much confusion for newbies! The solution is to
-use a ROM manager.</p>
+<p>MAME game ROMs are essentially <code>.ZIP</code> or <code>.7z</code> files.</p>
 
-<p>A ROM manager requires a .DAT file that relates to your specific MAME version. It can then modify any game ROM files
-you have accordingly, identify missing components, and create functioning game ROMs that match your MAME version.</p>
+<p>A <em>major</em> source of newbie confusion is that MAME versions are neither backwards- nor forwards-compatible! For example, if your game ROMs were designed to
+work with <b>MAME 0.139u1</b>, they will probably not work correctly with <strong>any</strong> other MAME version. Fortunately, you can rebuild your game ROMs to work
+with whichever MAME version you like by using a ROM manager.</p>
+
+<p>Each version of MAME comes with a corresponding <code>.DAT</code> file. This contains the information a ROM manager needs, to know how to rebuild
+your ROMs for that MAME version. (You can also download any <code>.DAT</code> files you need from the MAME website.)</p>
+
+
+<h4>MAME ROM organisation</h4>
+
+<p>Another source of confusion is in the three different ways that a MAME ROM set (your game collection) can be organised:</p>
+
+<p>Since many arcade machines share similar hardware, many game ROMs share identical files (within the zipped image).
+To save disk space, a ROM manager can <strong>merge</strong> or <strong>split</strong> your ROM set, to reduce file duplication.</p>
+
+<p>The most <em>intuitive</em> way to organise your ROM set is the <strong>non-merged</strong> option. This requires the most disk space,
+but ensures that every game ROM file is completely independent; neither relying on nor being required by any other ROM file.
+This makes it possible to copy, move, or delete individual game ROMs without affecting any others.</p>
+
+<p>In summary:</p>
+
+<ul class="spaced-list">
+<li><strong>MERGE</strong>: You can save disk space if you <strong>merge</strong> all of your individual ROMs into a single zipped file.
+This ensures that there is only one copy of any file in your ROM/ZIP, which is shared by all the games that need it.
+However, you can't simply add or remove individual games without rebuilding the entire ROM set.</li>
+
+<li><strong>SPLIT</strong>: You can <strong>split</strong> your ROM set, so that each game has a 'parent' version, and 'child' (regional) variations.
+You can delete any child variants you don't need, but the parent ROM is required by every child ROM.</li>
+
+<li><strong>NON-MERGED</strong>: A <strong>non-merged</strong> ROM set is simple. Every game is self-contained within a separate ROM file.
+This is not efficient in terms of disk space. However: you can delete any game or variant ROM file, without affecting any other;
+you can copy individual game ROM files to other devices and expect them to work.</li>
+</ul>
+
+<p>Assuming you have a very small collection of very old games, I would suggest using a <strong>non-merged</strong> ROM set.</p>
+
+<hr>
+
+
 
 <h3>8-bit Micros</h3>
 
@@ -233,19 +289,104 @@ The limited simplicity of these old computers made programming accessible; a gen
 disc drive, making it quick, easy, and reliable to save and load your own programs. The instruction manual was a work of art.
 It explained, in clear simple terms how to use a home computer. A reference section listed every BASIC command.
 The appendices listed code for simple games and databases. It ran CPM; it was MIDI compatible; you could attach a mouse, joystick, stereo,
-printer, EEPROMS, or the classic Multiface-II which allowed you to pause time, and use a hex-editor to directly modify
-any part of the memory!</p>
+printer, EEPROMS, or the classic Multiface-II which allowed you to freeze execution, and use a hex-editor to directly modify
+any part of the memory! You could <code>peek</code> and <code>poke</code> without limits!</p>
 
 <p>Again, there are several emulators that mimic that classic 8-bit experience. These home computers don't even need
-copyright games to be fun. Most had a BASIC interpreter built-in, so you can fire one up and start writing code
-straight away!</p>
+copyrighted games to be fun. Most had a BASIC interpreter built-in, so you can fire one up and start writing your own code right now,
+just like in the good old days!</p>
+
 
 
 
             <picture>
-                <source srcset="images_main/retro.webp" type="image/webp">
-                <img src="images_main/retro.jpg" alt="1950s style lithographic image of a boy on a bar stool playing a 1980s arcade game." width="1024" height="1024" class="responsive-image">
+                <source srcset="images_main/retro3.webp" type="image/webp">
+                <img src="images_main/retro3.jpg" alt="Retro 1980s desktop computer setup featuring a CRT monitor with a test pattern, a chunky keyboard-style computer, and a cassette deck with a mono speaker, rendered in a vintage 1950s lithographic illustration style." width="1024" height="1024" class="responsive-image">
             </picture>
+
+
+
+
+
+
+<hr>
+			<h3>What is Batocera.linux?</h3>
+
+			<p>Batocera is a free and open-source retro-gaming GNU/Linux distribution. It requires no knowledge of Linux.
+			Essentially, you simply write the Batocera image file to a USB stick, then copy your game ROMs onto it.
+			That USB stick should then boot on any PC, providing a portable gaming system!
+			With a Linux bootloader (like GRUB), Batocera can be installed alongside Windows or other Linux OSes in a multi-boot setup.</p>
+
+			<p>I had problems booting certain versions of Batocera on certain PCs.  However, <b>Batocera v5.18</b> has booted reliably
+			on <em>every</em> PC I could find: old or new; 32 or 64 bit!</p>
+			
+			<p><strong>N.B.</strong> On the 4th October 2020, Batocera changed the way that versions were numbered.
+			After <b>Batocera v.5.27</b> came a version known as both <b>Batocera v5.27.2</b> and <b>Batocera v28</b>.
+			Since then, version numbers have continued incrementally: Batocera v29, v30, v31, etc.</p>
+			
+<hr>
+			<h4>Installing Batocera v5.18 on a USB stick:</h4>
+			
+		<ol>
+			<li>Download the Batocera v5.18 <code>.img.gz</code> gzipped image file.</li>
+            <li>Extract the <code>.img</code> file. <i>(TIP: In Windows, use <a href="https://www.7-zip.org/" target="_blank" rel="noopener noreferrer">7-Zip</a>.)</i></li>            
+            
+
+            <li>Use <a href="https://www.balena.io/etcher" rel="noopener noreferrer">Balena Etcher</a> to write the <code>.img</code> file to a USB stick.</li>
+            <li>Boot the USB stick and wait for the file/partition setup to finish. Then, safely shut down or reboot.</li>
+            <li>The USB stick will now have two partitions with the following patition LABELs:
+                <ul>
+                    <li><strong>BATOCERA</strong> (FAT32) – Named <code>vfat</code></li>
+                    <li><strong>SHARE</strong> (ext4) – Named <code>userdata</code></li>
+                </ul>
+            </li>
+			<li>Use any other Linux OS to copy your game ROMs (and emulator BIOSes) to the <b>SHARE</b> partition.</li>
+
+        </ol>            
+			<h4>Batocera's SHARE partition:</h4>
+			
+			<p>The <code>ext4</code> SHARE partition contains various (intuitively named) sub-directories, where you will need
+			to copy your game ROMs, and BIOS files for any emulators.  With the right BIOS files, Batocera can emulate
+			many 8-bit home computers from the Amstrad CPC to the ZX81; and many games consoles from the 1970s Atari 2600 to
+			the Sega Megadrive, SNES, and beyond.</p>
+			
+			<p>However, Windows doesn't support <code>ext4</code> filesystems! You will need to use another Linux OS to access the SHARE partition.
+			If you don't already use Linux, I suggest installing
+			<a href="https://www.slax.org/" target="_blank" rel="noopener noreferrer">Slax</a>
+			on another USB stick, and booting Slax to copy files to your Batocera USB stick.</p>
+
+<hr>
+			<h4>Installing Batocera on a hard disk</h4>
+
+			<p>After installing Batocera on a USB stick, you can clone its BATOCERA and SHARE partitions
+			to your hard drive (e.g. using <a href="https://gparted.org/" rel="noopener noreferrer">GParted</a>).
+			On a dedicated arcade PC, Batocera should boot as expected.</p>
+			
+			<p>If you want to multi-boot Batocera alongside other OSes,
+			you will need a Linux boot manager, such as the fairly ubiquitous GRUB.
+			
+			If you already run Linux, you are probably already using GRUB. You just need to add a boot entry for Batocera
+			(as below), and regenerate the GRUB config file.</p>
+
+			<p>If you only use Windows, I suggest installing a minimalist installation of Arch Linux.  Then you can use Arch to
+			install GRUB, and configure additional boot entries for both Windows and Batocera.</p>
+
+			<h4>Batocera GRUB boot entry (example):</h4>
+
+<pre><strong>/etc/grub.d/40_custom</strong>
+<code>
+menuentry "Batocera" {
+	insmod part_gpt
+	insmod fat
+	search --no-floppy --set=root --label BATOCERA
+	configfile /EFI/BOOT/grub.cfg
+}</code></pre>
+
+
+
+
+
+
 
         </section>
 
@@ -254,7 +395,33 @@ straight away!</p>
         <section id="stuff">
             <h2>Stuff</h2>
 
-            <p>XXX-STUFF UNDER CONSTRUCTION!</p>
+            <h3>Emulators:</h3>
+
+            <ul>
+                <li><a href="https://www.mamedev.org/" target="_blank" rel="noopener noreferrer">MAME</a> - The original arcade machine emulator. <a href="https://en.wikipedia.org/wiki/MAME" target="_blank" rel="noopener noreferrer">Wikipedia: MAME</a>.</li>
+                <li><a href="https://www.retroarch.com/" target="_blank" rel="noopener noreferrer">RetroArch</a> - A frontend for MAME, other emulators, game engines and media players.</li>
+                <li><a href="https://batocera.org/" target="_blank" rel="noopener noreferrer">Batocera.linux</a> - A minimalist live operating system designed for arcade emulation.</li>
+                <li><a href="https://sourceforge.net/projects/knoppixmame/" target="_blank" rel="noopener noreferrer">KnoppiXMAME</a> - A live operating system based on a bootable CD image.</li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.seleuco.mame4all" target="_blank" rel="noopener noreferrer">MAME4droid (0.37b5)</a> - MAME 0.37b5 for Android devices.</li>
+                <li><a href="https://play.google.com/store/apps/details?id=com.seleuco.mame4droid" target="_blank" rel="noopener noreferrer">MAME4droid (0.139u1)</a> - MAME 0.139u1 for Android devices.</li>
+                <li><a href="https://emulation.gametechwiki.com/" target="_blank" rel="noopener noreferrer">Emulation General Wiki</a> - An extensive wiki regarding the emulation of many devices.</li>
+            </ul>    
+                
+            <h3>MAME ROM Managers:</h3>
+            <ul>
+                <li><a href="https://mamedev.emulab.it/clrmamepro/" target="_blank" rel="noopener noreferrer">Clrmame</a> - The most well-known ROM manager.</li>
+                <li><a href="https://www.romcenter.com/" target="_blank" rel="noopener noreferrer">RomCenter</a> - Old but reliable for retro arcade games.</li>
+           
+            </ul>
+
+<hr>
+
+
+
+
+
+
+
 
         </section>
 
