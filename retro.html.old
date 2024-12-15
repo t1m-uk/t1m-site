@@ -366,7 +366,7 @@ just like in the good old days!</p>
 
 
             </li>
-			<li>Copy your game ROMs (and emulator BIOSes) to the <span class="highlight">SHARE</span class="highlight"> partition.</li>
+			<li>Use any other Linux OS to copy your game ROMs (and emulator BIOSes) to the <span class="highlight">SHARE</span class="highlight"> partition.</li>
 
         </ol>            
 			<h4>Batocera's SHARE partition:</h4>

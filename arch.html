@@ -39,8 +39,6 @@
 
     <header>
         <a href="#nonsense" class="skip-link">Skip to content</a>
-        <a href="#stuff" class="skip-link">Skip to useful content</a>
-        <a href="#theme-toggle" class="skip-link">Skip to theme toggle</a>
         <nav aria-label="Main navigation">
             <button id="theme-toggle"> </button> <!-- Text and ARIA label added by JavaScript -->
             <a href="index.html">Ahoy!</a>
@@ -60,25 +58,34 @@
             <a href="#stuff" aria-label="Skip to useful content">(Skip &darr;)</a>
 
 <p><a href="https://archlinux.org/" target="_blank" rel="noopener noreferrer">Arch Linux</a> is the simplest way to gain complete control of your OS, without needing to be a genius.</p>
-<p>The USB installation media contains a tiny Arch installation, which simply boots to a <code>bash</code> prompt. To install Arch, you first clone the USB media to your PC. Then you install the components you want, one-by-one, ensuring they are configured precisely as you wish.</p>
-<p>The installation process <em>is</em> rather hands-on, but acts as a step-by-step learning experience; providing a full tour of Arch Linux, clearly demonstrating how everything works. This is perfect for beginners and, if you're a control-freak, you're going to love it!</p>
-<p>You can install whatever Desktop Environment you wish (or none, or several). I'm a big fan of XFCE's intuitive and unobtrusive UI. Also, Arch with XFCE runs <em>SO MUCH</em> faster than Windows (and most other Linux distros). If you have a slow low-spec laptop that is practically unusable with Windows, you'll be <em>amazed</em> at how fast and responsive it is with Arch and XFCE.</p>
+<p>The USB installation media contains a tiny Arch installation, which simply boots to a <code>bash</code> prompt. To install Arch, you first clone the USB media to your PC.
+Then you install the components you want, one-by-one, ensuring they are configured precisely as you wish.</p>
+<p>The installation process <em>is</em> rather hands-on, but acts as a step-by-step learning experience; providing a full tour of Arch Linux, clearly demonstrating how everything works.
+This is perfect for beginners and, if you're a control-freak, you're going to love it!</p>
+<p>You can install whatever Desktop Environment you wish (or none, or several). I'm a big fan of <span class="highligh">XFCE</span>'s intuitive and unobtrusive UI.
+Also, Arch with XFCE runs <em>so much</em> faster than Windows (and most other Linux distros).</p>
+<p>If you have a slow low-spec laptop that is practically unusable with Windows, you'll be <em>amazed</em> at how fast and responsive it is with Arch and XFCE.</p>
 
             <picture>
                 <source srcset="images_main/arch.webp" type="image/webp">
                 <img src="images_main/arch.jpg" alt="Retro 1950s newsprint style: A besuited magician, with raised arms and a delighted expression, as if revealing a magic trick." width="1024" height="1024" class="responsive-image">
             </picture>
 
-<p>The notes below are purely for my own reference. The official <a href="https://wiki.archlinux.org/" target="_blank" rel="noopener noreferrer">Arch Wiki</a> should always be your primary source of information. You must decide for yourself, after thoroughly reading the Arch Wiki, whether my notes are relevant to your situation, and how to adapt them to your needs.</p>
+
 
         </section>
 <hr>
         <section id="stuff">
             <h2>Stuff</h2>
 
+			<p>The notes below are purely for my own reference. The official <a href="https://wiki.archlinux.org/" target="_blank" rel="noopener noreferrer">Arch Wiki</a>
+			should always be your primary source of information. You must decide for yourself, after thoroughly reading the Arch Wiki, whether my notes are relevant to your situation,
+			and how to adapt them to your needs.</p>
+
+
 		<h3>Extra Keyboard Buttons</h3>
-		<p>Many keyboards have additional shortcut keys. Here's how to map the <em>Calculator</em> keyboard button to a program (such as <code>/usr/bin/galculator</code>):</p>
-		<p><a href="guides/arch-keyboard-calc.html" target="_blank" rel="noopener noreferrer">Enable the <em>Calculator</em> keyboard button</a></p>
+		<p>Many keyboards have additional shortcut keys. Here's how to map the <kbd>Calculator</kbd> keyboard button to a program (such as <code>/usr/bin/galculator</code>):</p>
+		<p><a href="guides/arch-keyboard-calc.html" target="_blank" rel="noopener noreferrer">Enable the <kbd>Calculator</kbd> keyboard button</a></p>
 
 		<!-- +-+ -->
 		
@@ -88,12 +95,12 @@
 		<ul>
 			<li><p>On my modern UEFI/GPT laptop, I would run:</p>
 			
-			<pre><code>$ sudo grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
+<pre><code>$ sudo grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
 $ sudo grub-mkconfig -o /boot/grub/grub.cfg</code></pre></li>
 			
 			<li><p>On my old BIOS/MBR PC, I run:</p>
 			
-			<pre><code>$ sudo grub-install --target=i386-pc /dev/sde
+<pre><code>$ sudo grub-install --target=i386-pc /dev/sde
 $ sudo grub-mkconfig -o /boot/grub/grub.cfg</code></pre></li>
 		</ul>
 
@@ -102,19 +109,19 @@ $ sudo grub-mkconfig -o /boot/grub/grub.cfg</code></pre></li>
 		<h3>Connect to a wireless network</h3>
 		<p>I rarely use wi-fi. For better privacy and performance, I start Arch with the wireless adaptor disabled. It is easily enabled with <code>modprobe</code>, then <code>iwctl</code> can scan for and connect to nearby networks:</p>
 		
-		<pre><code>$ sudo modprobe rtw88_8821ce
+<pre><code>$ sudo modprobe rtw88_8821ce
 $ iwctl
      station wl-wifi scan
      station wl-wifi get-networks
-     station wl-wifi connect &lt;<var>SSID</var>&gt; </code></pre>
+     station wl-wifi connect &lt;<var>SSID</var>&gt;</code></pre>
 
 		<!-- +-+ -->
 
 		<h3>Remove EXIF metadata in image files</h3>
 		<p>Image files typically contain metadata (data about data), which may include a timestamp and the GPS co-ordinates of the location a photo was taken. You can use <code>exiftool</code> to remove metadata.
-		<p>For example, the script below will remove EXIF metadata from any .jpg and .webp files in the current directory:</p>
+		<p>For example, the script below will remove EXIF metadata from all <code>.jpg</code> and <code>.webp</code> files in the current directory:</p>
 		
-		<pre><code>#!/bin/bash
+<pre><code>#!/bin/bash
 exiftool -all= -overwrite_original *.jpg
 exiftool -all= -overwrite_original *.webp</code></pre>
 
@@ -124,10 +131,40 @@ exiftool -all= -overwrite_original *.webp</code></pre>
 		<p>If you notice missing characters in XFCE notifications, the font cache may have become corrupted. To rebuild the cache, run:</p>
         <pre><code>$ fc-cache -fv</code></pre>
 
-        <p>Sometimes, font caches don’t clear properly with fc-cache. You can delete the cache files directly and regenerate them:</p>
-		<pre><code>$ rm -rf ~/.cache/fontconfig/*
+        <p>Sometimes, font caches don’t clear properly with <code>fc-cache</code>. You can delete the cache files directly and regenerate them:</p>
+<pre><code>$ rm -rf ~/.cache/fontconfig/*
 $ sudo rm -rf /var/cache/fontconfig/*
 $ fc-cache -fv</code></pre>
+
+		<!-- +-+ -->
+		
+		<h3>Enable scroll-toggle buttons on the Logitech Marble Mouse </h3>
+
+		<p>In my opinion, the <span class="highlight">Logitech Marble Mouse</span> (also known as the <span class="highlight">Logitech Trackman Marble</span>) is
+		the most ergonomic input device ever invented. The <em>only</em> criticism is that it lacks a scroll wheel.</p>
+		
+		<p>A good way to deal with this is to remap the small extra left/right mouse buttons so they behave as a middle-click. In many applictions,
+		a middle-click toggles scroll mode. Assuming you are using <code>systemd</code> and the <code>libinput</code> input driver, you can remap
+		your mouse buttons by creating a config file like this:</p>
+		
+
+<pre><code>/etc/X11/xorg.conf.d/10-libinput.conf
+
+Section "InputClass"
+	Identifier     "Marble Mouse via USB"
+	MatchProduct   "Logitech USB Trackball"
+	Driver         "libinput"
+	Option         "ButtonMapping" "1 0 3 4 5 6 7 2 2"
+EndSection
+
+Section "InputClass"
+	Identifier     "Marble Mouse via PS/2"
+	MatchProduct   "ImExPS/2 Logitech Explorer Mouse"
+	Driver         "libinput"
+	Option         "ButtonMapping" "1 0 3 4 5 6 7 2 2"
+EndSection</code></pre>
+
+
         </section>
 
     </main>

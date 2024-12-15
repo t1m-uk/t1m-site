@@ -42,6 +42,7 @@ header, section, main, footer {
     
     --footer-bg-color: #f4f4f4;
     --border-color: #ddd;
+    
     --code-bg-color: #000;
     --code-text-color: #f4f4f4;
     --pre-bg-color: #f4f4f4;
@@ -50,7 +51,6 @@ header, section, main, footer {
     --input-text-color: #000;
     
     --details-bg-color: #f5f5f5;
-    --details-open-bg-color: #f5f5f5;
     --details-text-color: #2a2a2a;
     --details-not-summary-bg-color: #f5f5f5;
     --details-not-summary-text-color: #333333;
@@ -65,6 +65,10 @@ header, section, main, footer {
     --theme-button-color: #fff;
     --theme-button-hover-bg-color: #0056b3;
     --theme-button-focus-bg-color: #0056b3;
+
+	--table-heading-bg-color: #f5f5f5;
+
+
 } */
 
 /* Dark theme variables*/
@@ -85,6 +89,7 @@ header, section, main, footer {
 
     --footer-bg-color: #333;
     --border-color: #444;
+    
     --code-bg-color: #2b2b2b;
     --code-text-color: #e0e0e0;
     --pre-bg-color: #2b2b2b;
@@ -93,7 +98,6 @@ header, section, main, footer {
     --input-text-color: #e0e0e0;
     
     --details-bg-color: #2b2b2b;
-    --details-open-bg-color: #2b2b2b;
     --details-text-color: #e0e0e0;
     --details-not-summary-bg-color: #2b2b2b;
     --details-not-summary-text-color: #e0e0e0;
@@ -108,6 +112,8 @@ header, section, main, footer {
     --theme-button-color: #e0e0e0;
     --theme-button-hover-bg-color: #555;
     --theme-button-focus-bg-color: #555;
+    
+    --table-heading-bg-color: #2b2b2b;
 }
 
 /* ========================= */
@@ -154,6 +160,9 @@ footer {
 /* === 4. MAIN ELEMENTS === */
 /* ======================== */
 
+.highlight {
+	font-weight: bold;
+}
 
 a {
     color: #004080;
@@ -256,8 +265,59 @@ pre code {
     display: block;
 }
 
-.spaced-list li {
+ul, ol {
+    list-style-position: outside;
+}
+
+ol.spaced-list li,
+ul.spaced-list li {
     margin-bottom: 10px;
+}
+
+ol li span.bullet-label,
+ul li span.bullet-label {
+    font-weight: bold;
+    margin-right: 0.5em;
+}
+
+
+
+
+
+table {
+    border-collapse: collapse;
+    margin: 20px 10px;
+}
+
+/* Make the caption (table title) invisible, but available to screen-readers */
+table caption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+th, td {
+    padding: 4px 20px 4px 10px;
+    text-align: left;
+    border: 1px solid;
+    border-color: #ddd;
+}
+
+[data-theme="dark"] th, td {
+	border-color: var(--border-color);
+}
+
+th {
+    font-weight: bold;
+    background-color: #f5f5f5;
+}
+
+[data-theme="dark"] th {
+	background-color: var(--table-heading-bg-color);
 }
 
 /* ========================== */
@@ -496,27 +556,17 @@ summary {
     cursor: pointer;
 }
 
-details summary {
-    padding-inline-start: 15px;
-}
-
-summary:hover, summary:focus {
+summary:hover,
+summary:focus {
     text-decoration: underline;
     outline-offset: 2px;
     outline: 2px solid;
     outline-color: #80d8ff;
 }
 
+[data-theme="dark"] summary:hover,
 [data-theme="dark"] summary:focus {
 	outline-color: var(--link-focus-outline);
-}
-
-details[open] {
-    background-color: #f5f5f5;
-}
-
-[data-theme="dark"] details[open] {
-    background-color: var(--details-open-bg-color);
 }
 
 details > *:not(summary) {
@@ -526,14 +576,31 @@ details > *:not(summary) {
     background-color: #f5f5f5;
 }
 
-[data-theme="dark"] details[open] > *:not(summary) {
+[data-theme="dark"] details > *:not(summary) {
     color: var(--details-not-summary-text-color);
     background-color: var(--details-not-summary-bg-color);
 }
 
-details ul li, details ol li {
+/* Add spacing below clickable text when expanded */
+details[open] summary {
+    margin-bottom: 2rem;
+}
+
+article details ul li, article details ol li {
     margin-top: 8px;
 }
+
+/* Imitate ChatGPT's style by bolding certain text after bullet points */
+article details ol li .chatgpt-bullet-heading,
+article details ul li .chatgpt-bullet-heading {
+    font-weight: bold;
+}
+
+article details h2 {
+	font-size: 1.5rem;
+}
+
+
 
 /* =========================================== */
 /* === 10. MEDIA QUERIES FOR SMALL SCREENS === */
