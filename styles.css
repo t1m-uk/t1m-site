@@ -192,6 +192,13 @@ a:focus {
 	outline-color: var(--link-focus);
 }
 
+/* When a local anchor link is clicked, scroll up a bit to prevent the nav bar obscuring the top of the linked section */
+[id] {
+    scroll-margin-top: 96px; /* Approx height of nav bar */
+}
+
+
+
 img {
     max-width: 100%; /* fit width */
     height: auto; /* maintain aspect ratio */
@@ -280,7 +287,13 @@ ul li span.bullet-label {
     margin-right: 0.5em;
 }
 
-
+ol li span.bullet-label-caps,
+ul li span.bullet-label-caps {
+	text-transform: uppercase;
+    font-weight: bold;
+    margin-right: 0.5em;
+    
+}
 
 
 
@@ -312,7 +325,7 @@ th, td {
 }
 
 th {
-    font-weight: bold;
+	font-weight: normal;
     background-color: #f5f5f5;
 }
 
@@ -331,10 +344,12 @@ nav {
     width: 100%;           /* Ensures the nav bar spans the full width */
     padding: 10px 15px;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;		/* Don't wrap nav bar to multiple rows; use horizontal scrolling */
     align-items: center;
-    justify-content: center;
+	justify-content: flex-start;	/* left-align nav bar items */
     z-index: 1000;
+    white-space: nowrap;   /* Prevent wrapping of links */
+    overflow-x: auto;      /* Allow horizontal scrolling */
     background-color: #000;
 }
 
@@ -348,7 +363,7 @@ nav a {
     display: inline-block;
 	border-radius: 4px;
     white-space: nowrap; /* Prevent individual link text from wrapping */
-    margin: 5px 10px 5px 10px; /* space between links */
+    margin: 5px 10px; /* space between links */
     padding: 16px 12px; /* Padding required for ARIA min touch area: 48x48 */
 	color: #fff;
 }
@@ -524,7 +539,7 @@ nav button#theme-toggle:focus {
     z-index: 100; /* Display on top of other objects... */
     border-radius: 2px;
     left: 10px;
-    top: 85px;
+    top: 100px;
     padding: 10px;
     background: #000;
     color: #fff;
@@ -608,17 +623,23 @@ article details h2 {
 
 @media (max-width: 600px) {
     html {
-        font-size: 14px; /* 2px smaller than default */
+        font-size: 14px; /* 16px is default for larger screens */
     }
     
     main {
-        max-width: 100%; /* Use full width on small screens */
-        padding: 10px; /* Reduce padding */
-        padding-top: 80px; /* But still allow space for nav bar */
+        max-width: 100%; /* Use full width */
+        padding: 8px; /* Reduce padding */
     }
+
+	.skip-link:focus {
+		top: 86px;
+	}
 
     nav a {
         margin: 0 5px;
-        padding: 17px 12px; /* add 1px (17 vs 16) above and below to account for 2px smaller html font size */
+        padding: 17px 12px; /* Increase 16px padding if font-size is reduced (for accessibility). */
     }
+    
+    [id] {
+        scroll-margin-top: 95px; /* Scroll down when opening an anchor link; allow space for nav bar */
 }

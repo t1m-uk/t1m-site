@@ -62,7 +62,7 @@
             <h3>The Lost Generation of Arcadia</h3>
 
 <p>Are ye olde enough to be retro? Do you remember the classic 1980s arcade games like 
-Pac-Man, Space Invaders, and Donkey Kong?</p>
+<span class="highlight">Pac-Man</span>, <span class="highlight">Space Invaders</span>, and <span class="highlight">Donkey Kong</span>?</p>
 
 <p>These coin-operated arcade machines were only popular for a decade or two, but represent an important era when inventive game-play
 and ingenious programming launched us into distant worlds created with incredibly limited hardware (by today's standards).</p>
@@ -125,7 +125,7 @@ that provides free arcade machine hardware emulators.</p>
 of game ROMs. However, in some jurisdictions the right to make personal backups or format-shift legitimately acquired media
 is protected in law. And some regions are more relaxed about non-profit educational use, or historical archiving.</p>
 
-<p>I will <strong>NOT</strong> provide any links to download MAME ROM sets or copyrighted games. Fortunately, there are a few
+<p>I will <strong>not</strong> provide any links to download MAME ROM sets or copyrighted games. Fortunately, there are a few
 modern free and open-source games that are a great way to demonstrate MAME's hardware emulation without any legal issues.</p>
 
 <h4>Not Legal Advice (from ChatGPT)</h4>
@@ -232,7 +232,7 @@ I asked ChatGPT-4o why, and got a very <em>plausible</em> explanation:</p>
 <p>MAME game ROMs are essentially <code>.ZIP</code> or <code>.7z</code> files.</p>
 
 <p>A <em>major</em> source of newbie confusion is that MAME versions are neither backwards- nor forwards-compatible! For example, if your game ROMs were designed to
-work with MAME 0.139u1, they will be unlikely to work with <strong>any</strong> other MAME version.</p>
+work with <span class="highlight">MAME 0.139u1</span>, they will be unlikely to work with <strong>any</strong> other MAME version.</p>
 
 <p>Fortunately, you can rebuild your game ROMs to work with whichever MAME version you like by using a ROM manager.</p>
 
@@ -254,14 +254,14 @@ This makes it possible to copy, move, or delete individual game ROMs without aff
 <p>In summary:</p>
 
 <ul class="spaced-list">
-<li><span class="bullet-label">Merged:</span> You can save disk space if you <strong>merge</strong> all of your individual ROMs into a single zipped file.
+<li><span class="bullet-label-caps">Merged:</span> You can save disk space if you <strong>merge</strong> all of your individual ROMs into a single zipped file.
 This ensures that there is only one copy of any file in your ROM/ZIP, which is shared by all the games that need it.
 However, you can't simply add or remove individual games without rebuilding the entire ROM set.</li>
 
-<li><span class="bullet-label">Split:</span> You can <strong>split</strong> your ROM set, so that each game has a 'parent' version, and 'child' (regional) variations.
+<li><span class="bullet-label-caps">Split:</span> You can <strong>split</strong> your ROM set, so that each game has a 'parent' version, and 'child' (regional) variations.
 You can delete any child variants you don't need, but the parent ROM is required by every child ROM.</li>
 
-<li><span class="bullet-label">Non-merged:</span> A <strong>non-merged</strong> ROM set is simple. Every game is self-contained within a separate ROM file.
+<li><span class="bullet-label-caps">Non-merged:</span> A <strong>non-merged</strong> ROM set is simple. Every game is self-contained within a separate ROM file.
 This is not efficient in terms of disk space if you have a large ROM set. However: you can delete any game or variant ROM file, without affecting any other;
 you can copy individual game ROM files independently.</li>
 </ul>
@@ -306,13 +306,18 @@ just like in the good old days!</p>
 <hr>
 			<h3>What is Batocera.linux?</h3>
 
-			<p>Batocera is a free and open-source retro-gaming GNU/Linux distribution. It requires no knowledge of Linux.
-			Essentially, you simply write the Batocera image file to a USB stick, then copy your game ROMs onto it.
-			That USB stick should then boot on any PC, providing a portable gaming system!
-			With a Linux bootloader (like GRUB), Batocera can be installed alongside Windows or other Linux OSes in a multi-boot setup.</p>
-
+			<p>Batocera is a free and open-source retro-gaming GNU/Linux distribution. It requires <em>no</em> knowledge of Linux.
+			Essentially, you simply write the Batocera image file to a USB stick (e.g. with Balena Etcher), then copy your game ROMs onto it.
+			That USB stick should then boot on any PC, providing a portable gaming system!</p>
+			
+			<p>As well as being a front-end for MAME, Batocera can emulate many 8-bit home computers from the <span class="highlight">Amstrad CPC</span>
+			to the <span class="highlight">ZX81</span>; and games consoles from the 1970s <span class="highlight">Atari 2600</span> to the
+			<span class="highlight">Sega MegaDrive</span>, <span class="highlight">SNES</span>, and beyond.</p>
+			
 			<p>I had problems booting certain versions of Batocera on certain PCs.  However, <span class="highlight">Batocera v5.18</span> has booted reliably
 			on <em>every</em> PC I could find: old or new; 32 or 64 bit!</p>
+			
+			<p>With a Linux bootloader (like GRUB), Batocera can also be installed on a hard drive, alongside Windows or other Linux OSes in a multi-boot setup.</p>
 			
 			<p><strong>N.B.</strong> On the 4th October 2020, Batocera changed the way that versions were numbered.
 			After <span class="highlight">Batocera v.5.27</span> came a version known as both <span class="highlight">Batocera v5.27.2</span> and <span class="highlight">Batocera v28</span>.
@@ -322,8 +327,8 @@ just like in the good old days!</p>
 			<h4>Installing Batocera v5.18 on a USB stick:</h4>
 			
 		<ol>
-			<li>Download the Batocera v5.18 <code>.img.gz</code> gzipped image file.</li>
-            <li>Extract the <code>.img</code> file from the <code>.img.gz</code> file. (TIP: In Windows, use <a href="https://www.7-zip.org/" target="_blank" rel="noopener noreferrer">7-Zip</a>.)</li>            
+			<li>Download the <span class="highlight">Batocera v5.18</span> <code>.img.gz</code> gzipped image file.</li>
+            <li>Extract the <code>.img</code> file from the <code>.img.gz</code> file.<br>(TIP: In Windows, use <a href="https://www.7-zip.org/" target="_blank" rel="noopener noreferrer">7-Zip</a>.)</li>            
             
 
             <li>Use <a href="https://www.balena.io/etcher" rel="noopener noreferrer">Balena Etcher</a> to write the <code>.img</code> file to a USB stick.</li>
@@ -368,23 +373,29 @@ just like in the good old days!</p>
             </li>
 			<li>Copy your game ROMs (and emulator BIOSes) to the <span class="highlight">SHARE</span class="highlight"> partition.</li>
 
-        </ol>            
+        </ol>    
+        
+        
+        
+                
 			<h4>Batocera's SHARE partition:</h4>
 			
-			<p>The <code>ext4</code> SHARE partition contains various (intuitively named) sub-directories, where you will need
-			to copy your game ROMs, and BIOS files for any emulators.  With the right BIOS files, Batocera can emulate
-			many 8-bit home computers from the Amstrad CPC to the ZX81; and many games consoles from the 1970s Atari 2600 to
-			the Sega Megadrive, SNES, and beyond.</p>
+			<p>The <code>ext4</code> SHARE partition contains various (intuitively named) sub-directories, where you must
+			copy your game ROMs, and any other files (e.g. BIOS files for emulators).</p>
+
+			<p>Windows doesn't support <code>ext4</code> filesystems. So you will need to use another Linux OS to access the SHARE partition.</p>
 			
-			<p>However, Windows doesn't support <code>ext4</code> filesystems! You will need to use another Linux OS to access the SHARE partition.
-			If you don't already use Linux, I suggest installing
+			<p>If you aren't familiar with Linux, I suggest installing
 			<a href="https://www.slax.org/" target="_blank" rel="noopener noreferrer">Slax</a>
-			on another USB stick, and booting Slax to copy files to your Batocera USB stick.</p>
+			on another USB stick. It requires no configuration or Linux experience. Simply boot the Slax USB, open the file manager, and copy your files.</p>
+
+
+
 
 <hr>
 			<h4>Installing Batocera on a hard disk</h4>
 
-			<p>To install Batocera on a hard drive, you can simply clone the partitions from the USB stick
+			<p>To install Batocera on a hard drive, you can clone the partitions from a USB stick installation
 			(e.g. using <a href="https://gparted.org/" rel="noopener noreferrer">GParted</a>).</p>
 			
 			<p>To multi-boot Batocera alongside other OSes, you will need a Linux boot manager, such as the fairly ubiquitous GRUB.
@@ -407,7 +418,7 @@ menuentry "Batocera" {
 			<h4>TIP: Reset joystick inputs to defaults:</h4>
 			
 			<p>Custom input settings are stored in <code>es_input.cfg</code>. Delete the file to restore the original default settings:</p>
-			<pre><code>$ rm /recalbox/share/system/.emulationstation/es_input.cfg</code></pre>
+			<pre><code>rm /recalbox/share/system/.emulationstation/es_input.cfg</code></pre>
 
 
 
