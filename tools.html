@@ -59,7 +59,8 @@
             <p>As a great man once wrote, <q>If it it ain't broke, tweak it. Just don't tell the wife. So grab hold of your tools, and bring those dreams to life.</q> Ah, men!</p>
 
             <picture>
-                <source srcset="images_main/tools.webp" type="image/webp">
+                <source srcset="images_main/tools-512.webp" media="(max-width: 600px)" type="image/webp">
+                <source srcset="images_main/tools-1024.webp" media="(min-width: 601px)" type="image/webp">
                 <img src="images_main/tools.jpg" alt="Man with arms outstretched grins while riding a horse that pedals a tandem bicycle." width="1024" height="1024" class="responsive-image">
             </picture>
 
@@ -140,10 +141,32 @@
 			<li><a href="https://www.audacityteam.org/" rel="noopener noreferrer">Audacity</a> - Audio file editor.</li>
 			<li><a href="https://www.exactaudiocopy.de/" rel="noopener noreferrer">Exact Audio Copy (EAC)</a> - Rip CDs in the <em>best possible</em> quality.
 			Recover even physically damaged and otherwise unplayable CDs.</li>
-			<li><a href="https://www.ffmpeg.org/" rel="noopener noreferrer">ffmpeg</a> - A reliable, standards-compliant transcoder for audio and video files.</li>
 			<li><a href="https://www.mp3tag.de/en/" rel="noopener noreferrer">Mp3tag</a> - Edit metadata tags for AV files (MP3, MP4, OGG, FLAC, etc.). Windows only.</li>
 			<li><a href="https://www.shotcut.org/" rel="noopener noreferrer">Shotcut</a> - Powerful yet beginner-friendly video editor.</li>
 		</ul>
+		
+		<h4>Transcoding with <code>ffmpeg</code></h4>
+		
+		<ul>
+			<li><a href="https://www.ffmpeg.org/" rel="noopener noreferrer">ffmpeg</a> - A reliable, standards-compliant transcoder for many file types.</li>
+		
+		<p>To resize a WebP image with <code>ffmpeg</code>:</p>
+		<pre><code>ffmpeg -i input.webp -vf scale=800:600 output.webp</code></pre>
+		
+		<p>To resize without changing the aspect ratio, set the width or height to -1:</p>
+		<pre><code>ffmpeg -i input.webp -vf scale=800:-1 output.webp</code></pre>
+		
+		<p>To extract an AAC audio stream from an MP4 container:</p>
+		<pre><code>ffmpeg -i input.mp4 -vn -acodec copy output.aac</code></pre>
+		
+		<p>To create a new MP4 audio (.M4A) container with a single AAC stream:</p>
+		<pre><code>ffmpeg -i input.aac -c copy -bsf:a aac_adtstoasc output.m4a</code></pre>
+
+
+
+		</ul>
+
+
 		
 		<h4>System utilities</h4>
 		<ul>
