@@ -45,6 +45,7 @@
             <a href="lineage.html">Lineage</a>
             <a href="tools.html" aria-current="page" class="active">Tools</a>
             <a href="retro.html">Retro</a>
+            <a href="DIAGNOSTICS.html">DIAGNOSTICS</a>
         </nav>
     </header>
 
@@ -148,24 +149,20 @@
 		<h4>Transcoding with <code>ffmpeg</code></h4>
 		
 		<ul>
-			<li><a href="https://www.ffmpeg.org/" rel="noopener noreferrer">ffmpeg</a> - A reliable, standards-compliant transcoder for many file types.</li>
-		
-		<p>To resize a WebP image with <code>ffmpeg</code>:</p>
-		<pre><code>ffmpeg -i input.webp -vf scale=800:600 output.webp</code></pre>
-		
-		<p>To resize without changing the aspect ratio, set the width or height to -1:</p>
-		<pre><code>ffmpeg -i input.webp -vf scale=800:-1 output.webp</code></pre>
-		
-		<p>To extract an AAC audio stream from an MP4 container:</p>
-		<pre><code>ffmpeg -i input.mp4 -vn -acodec copy output.aac</code></pre>
-		
-		<p>To create a new MP4 audio (.M4A) container with a single AAC stream:</p>
-		<pre><code>ffmpeg -i input.aac -c copy -bsf:a aac_adtstoasc output.m4a</code></pre>
-
-
-
+			<li><a href="https://www.ffmpeg.org/" rel="noopener noreferrer">ffmpeg</a> - A reliable, standards-compliant transcoder for many file types.		
+				<p>To resize a WebP image with <code>ffmpeg</code>:</p>
+				<pre><code>ffmpeg -i input.webp -vf scale=800:600 output.webp</code></pre>
+				
+				<p>To resize without changing the aspect ratio, set the width or height to -1:</p>
+				<pre><code>ffmpeg -i input.webp -vf scale=800:-1 output.webp</code></pre>
+				
+				<p>To extract an AAC audio stream from an MP4 container:</p>
+				<pre><code>ffmpeg -i input.mp4 -vn -acodec copy output.aac</code></pre>
+				
+				<p>To create a new MP4 audio (.M4A) container with a single AAC stream:</p>
+				<pre><code>ffmpeg -i input.aac -c copy -bsf:a aac_adtstoasc output.m4a</code></pre>
+			</li>
 		</ul>
-
 
 		
 		<h4>System utilities</h4>

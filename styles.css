@@ -295,7 +295,9 @@ ul li span.bullet-label-caps {
     
 }
 
-
+/* ================= */
+/* === 5. TABLES === */
+/* ================= */
 
 table {
     border-collapse: collapse;
@@ -305,10 +307,10 @@ table {
 /* Make the caption (table title) invisible, but available to screen-readers */
 table caption {
     position: absolute;
+    left: -999px;
+    top: -999px;
     width: 1px;
     height: 1px;
-    margin: -1px;
-    clip: rect(0, 0, 0, 0);
     overflow: hidden;
     white-space: nowrap;
 }
@@ -334,7 +336,7 @@ th {
 }
 
 /* ========================== */
-/* === 5. NAVIGATION MENU === */
+/* === 6. NAVIGATION MENU === */
 /* ========================== */
 
 nav {
@@ -403,7 +405,7 @@ nav a.active {
 }
 
 /* =========================== */
-/* === 6. FORMS AND INPUTS === */
+/* === 7. FORMS AND INPUTS === */
 /* =========================== */
 
 input[type="text"],
@@ -458,7 +460,7 @@ input[type="checkbox"]:focus {
 }
 
 /* ================== */
-/* === 7. BUTTONS === */
+/* === 8. BUTTONS === */
 /* ================== */
 
 /* Default button styles */
@@ -526,7 +528,7 @@ nav button#theme-toggle:focus {
  }
 
 /* ===================== */
-/* === 8. SKIP LINKS === */
+/* === 9. SKIP LINKS === */
 /* ===================== */
 
 .skip-link { 
@@ -545,9 +547,9 @@ nav button#theme-toggle:focus {
     color: #fff;
 }
 
-/* ===================================== */
-/* === 9. DETAILS & SUMMARY ELEMENTS === */
-/* ===================================== */
+/* ====================================== */
+/* === 10. DETAILS & SUMMARY ELEMENTS === */
+/* ====================================== */
 
 /* Styling for <details> and <summary> for collapsible content */
 details {
@@ -618,7 +620,7 @@ article details h2 {
 
 
 /* =========================================== */
-/* === 10. MEDIA QUERIES FOR SMALL SCREENS === */
+/* === 11. MEDIA QUERIES FOR SMALL SCREENS === */
 /* =========================================== */
 
 @media (max-width: 600px) {
@@ -641,5 +643,6 @@ article details h2 {
     }
     
     [id] {
-        scroll-margin-top: 95px; /* Scroll down when opening an anchor link; allow space for nav bar */
+        scroll-margin-top: 90px; /* Scroll down when opening an anchor link; allow space for nav bar */
+	}
 }
