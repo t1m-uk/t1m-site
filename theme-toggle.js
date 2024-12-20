@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 // Apply the stored theme preference immediately
 const storedTheme = localStorage.getItem('dark');
 if (storedTheme === '1') {
