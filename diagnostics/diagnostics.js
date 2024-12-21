@@ -1,4 +1,4 @@
-/* jshint esversion: 6 */
+/* jshint esversion: 11 */
 
 document.addEventListener('DOMContentLoaded', () => {
     // Feature detection for optional chaining

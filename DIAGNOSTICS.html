@@ -38,7 +38,7 @@
 <body>
 
     <header>
-        <a href="#nonsense" class="skip-link">Skip to content</a>
+        <a href="#stuff" class="skip-link">Skip to content</a>
         <nav aria-label="Main navigation">
             <!--- The button below is hidden when JavaScript is disabled by the <noscript> entry -->
             <button id="theme-toggle"> </button> <!--- Text and ARIA label added by JavaScript -->
@@ -54,33 +54,15 @@
     <main id="main-content">
         <h1>DIAGNOSTICS</h1>
 
-        <section>
-            <h2 id="nonsense">Nonsense</h2>
-            <a href="#stuff" aria-label="Skip to useful content">(Skip &darr;)</a>
-
-			<p>Who <em>are</em> you, and what are you <em>doing</em>?! I ask myself such questions on a regular basis.
-			With a bit of fancy JavaScript in the browser, all becomes clear.  Refresh the page to update it.</p>
-			
-			<p>None of this information is collected by me; it is simply displayed by your web browser's local settings.</p>
-
-<!--            <picture>
-                <source srcset="images_main/XXX_IMAGE_FILE-512.webp" media="(max-width: 600px)" type="image/webp">
-                <source srcset="images_main/XXX_IMAGE_FILE-1024.webp" media="(min-width: 601px)" type="image/webp">
-                <img src="images_main/XXX_IMAGE_FILE.jpg" alt="XXX_IMAGE_ALT" width="XXX_IMAGE_WIDTH" height="XXX_IMAGE_HEIGHT" class="responsive-image">
-            </picture>
--->
-        </section>
-
-<hr>
 
         <section id="stuff">
             <h2>Stuff</h2>
+            <a href="#nonsense" aria-label="Skip section">(Skip &darr;)</a>
 
 			<noscript>
 				<p>JavaScript is disabled in your browser. Enable it to view diagnostics.</p>
 			</noscript>
-            
-            
+         
 			<table>
 				<caption>Browser Diagnostics</caption>
 				<thead>
@@ -138,7 +120,7 @@
 						<td id="user-agent">?</td>
 					</tr>
 					<tr>
-						<td><span class="highlight">Time Zone</span></td>
+						<td><span class="highlight">Time zone</span></td>
 						<td id="time-zone">?</td>
 					</tr>
 					<tr>
@@ -151,14 +133,61 @@
 					</tr>
 					
 					<tr>
+						<!-- Connection-type is not supported in Firefox or Safari -->
 						<td><span class="highlight">Connection Type</span></td>
 						<td id="connection-type">?</td>
 					</tr>
 
+					<tr>
+						<td><span class="highlight">Public IPv4 Address</span></td>
+						<td id="ipv4-address">(Click button below)</td>
+					</tr>
+					<tr>
+						<td><span class="highlight">Public IPv6 Address</span></td>
+						<td id="ipv6-address">(Click button below)</td>
+					</tr>
+
+
+
 				</tbody>
 			</table>
 
+<button onclick="fetchIPAddresses()">Show IP Addresses</button>
+
+			<p>To obtain your public IPv4 and IPv6 addresses, click the button to make API calls to
+			<a href="https://www.ipify.org/" target="_blank" rel="noopener noreferrer">ipify.org</a>.
+			The <a href="https://github.com/rdegges/ipify-api" target="_blank" rel="noopener noreferrer">ipify-api</a>
+			project is free and open-source.  Their web page states that, <q>No visitor information is ever logged. Period.</q></p>
+
         </section>
+
+<hr>
+
+        <section>
+            <h2 id="nonsense">Nonsense</h2>
+            <a href="#stuff" aria-label="Skip to previous section">(Skip &uarr;)</a>
+
+			<p>Who <em>are</em> you, and what are you <em>doing</em>?! I ask myself such questions on a regular basis.
+			With a fancy bit of JavaScript, all will become clear!</p>
+			
+
+			
+<!--        <picture>
+                <source srcset="images_main/XXX_IMAGE_FILE-512.webp" media="(max-width: 600px)" type="image/webp">
+                <source srcset="images_main/XXX_IMAGE_FILE-1024.webp" media="(min-width: 601px)" type="image/webp">
+                <img src="images_main/XXX_IMAGE_FILE.jpg" alt="XXX_IMAGE_ALT" width="XXX_IMAGE_WIDTH" height="XXX_IMAGE_HEIGHT" class="responsive-image">
+            </picture>
+-->
+        </section>
+        
+
+
+
+
+
+
+
+
 
     </main>
 
@@ -167,7 +196,8 @@
     </footer>
 
     <script src="theme-toggle.js"></script>
-    <script src="diagnostics.js"></script>
+    <script src="diagnostics/diagnostics.js"></script>
+    <script src="diagnostics/fetchIP.js"></script>
 
 </body>
 </html>
