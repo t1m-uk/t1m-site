@@ -45,7 +45,7 @@
             <li>Reboot into <strong>Recovery</strong>. <em>(Do not boot into the main OS yet, as it will restore the old Recovery!)</em>
                 <ol>
                     <li>On the phone, select <strong>Apply update</strong>, then <strong>Apply from ADB</strong>. On the PC, run:
-                        <pre><code>$ adb sideload /path/to/lineageOS-image.zip</code></pre>
+                        <pre><code>$ adb -d sideload /path/to/lineageOS-image.zip</code></pre>
                     </li>
                     <li>For new LineageOS installations, optionally download and install the latest <a href="https://wiki.lineageos.org/gapps/" target="_blank" rel="noopener noreferrer">Google Apps</a>:
                         <pre><code>$ adb -d sideload /path/to/GApps.zip</code></pre>

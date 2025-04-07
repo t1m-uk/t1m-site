@@ -145,6 +145,16 @@ main {
     margin-top: 100px;
 }
 
+main.gallery-page {
+    max-width: none; /* Removes the 900px limit */
+    width: auto; /* Allows natural width */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Keeps content centered */
+}
+
+
+
 footer {
     padding: 10px;
     text-align: center;
@@ -197,12 +207,25 @@ a:focus {
     scroll-margin-top: 96px; /* Approx height of nav bar */
 }
 
-
-
 img {
     max-width: 100%; /* fit width */
     height: auto; /* maintain aspect ratio */
     display: block; /* block element (not in-line for responsive design) */
+}
+
+.image-gallery img {
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+.image-gallery {
+    display: flex;
+    flex-direction: column; /* Stack images vertically */
+    gap: 250px; /* Adds spacing between images */
+    margin-bottom: 175px;
+    margin-top: 110px;
+    align-items:center;
 }
 
 h1 { /* Main page title (Ahoy!, Arch, Lineage, etc.) */
