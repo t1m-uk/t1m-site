@@ -1,0 +1,68 @@
+Block adverts and trackers
+
+WHY BLOCK CONTENT?
+
+QUOTE: Would you like to see an advert?  Can I take your fingerprints?  Just hold still while I attach this GPS tracker.  Of course, I'll need your Facebook password.  And a complete list of every Google search you've ever made, on all your devices.  And I want to have a free license to exploit anything you say, do, or create on this platform.  In exchange, you get to click a button!
+
+Please click OK to accept, or click Accept if you feel OK.
+
+Verily, I jest.  But that's the essence of most privacy policies these days!  You might think you have nothing to hide, but big tech companies know your location, email addreses, device IDs, list of contacts, social media profiles, every Google searh you've ever made... and those of everyone else around you.  Is it just me who feels like smartphones are Orwellian telescreens that we buy for ourselves?
+
+And who wants adverts clogging up their eyeballs?  Especially if you have limited data or a slow connection.  Why waste precious data downloading adverts and trackers?!  
+
+LIMITATIONS
+
+Sadly, it's not possible to block every possible advert while allowing everything you want to see.  Block too much, and you'll likely need to manually set exceptions to allow you to access certain sites.
+
+I want an easy life.  I want to block ads, trackers, and so on... but I want to be able to use the Internet normally, without fiddling around and setting exceptions.  Therefore, the content blocking shown in this article is not intended to be comprehensive.  It won't block every advert, or make you anonymous on the Internet.  But it will save your bandwidth, sanity, and eyeballs.
+
+
+
+
+
+Your web browser probably has a very rare (or possibly unique) &quote;fingerprint&quote;, in which case you can be tracked 
+
+
+Unique (and rare) browsers are easily tracked.
+
+
+
+You can test your web browser here:
+
+https://coveryourtracks.eff.org/
+https://deviceinfo.me/
+
+
+
+https://mashable.com/article/google-digital-fingerprinting-user-tracking
+
+
+
+
+STUFF:
+
+Device Blocking
+
+In my opinion, Firefox is the "best" web browser.  It allows for the most configuration, and isn't integrated into the OS in the same way as Microsoft Edge and Google Chrome.
+
+FIREFOX DL FOR WIN PC
+FIREFOX DL FOR ANDROID
+DUCKDUCKGO WEB BROWSER FOR ANDROID (Ad-free YouTube).
+
+Enable HTTPS-only, choose DNS wisely, disable 3rd-party cookies, disable history, telemetry, access to camera, etc.  Use multiple profiles.
+
+Startpage or DuckDuckGo or Qwant
+
+Ublock Origin is an excellent
+
+Fingerprinting, prefetching, privacy, language, fonts, DRM, cookies, etc.
+
+
+
+
+
+
+
+
+
+

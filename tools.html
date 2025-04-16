@@ -73,7 +73,7 @@
         <section id="stuff">
             <h2>Stuff</h2>
          
-         <h3>Help and Forums</h3>
+         <h3>Help and forums</h3>
          
          <ul>
             <li><a href="https://www.techist.com/forums/" target="_blank" rel="noopener noreferrer nofollow">Techist Forums</a> - A cornucopia of IT related tips and tricks.</li>
@@ -106,17 +106,23 @@
 		<h4>Web design</h4>
 		<ul>
 			<li><a href="https://www.w3schools.com/references/index.php" target="_blank" rel="noopener noreferrer">W3 Schools: References</a> - HTML, CSS, and JavaScript references (and more).</li>
-			<li><a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C: HTML validator</a> - The official HTML validator from the World Wide Web Consortium.</li>
-			<li><a href="https://www.w3.org/developers/tools/" target="_blank" rel="noopener noreferrer">W3C: other validators</a> - A selection of additional web code validators from World Wide Web Consortium.</li>
-			<li><a href="https://csslint.net/" target="_blank" rel="noopener noreferrer">CSS Lint</a> - Identify and fix CSS errors. (Not perfect, but still useful.).</li>
-			<li><a href="https://wave.webaim.org/" target="_blank" rel="noopener noreferrer">WAVE</a> - The Web Accessibility Evaluator. Optimise your website for inclusive accessibility.</li>
-			<li><a href="https://jshint.com/" target="_blank" rel="noopener noreferrer">JSHint</a> - A simple JavaScript checker.</li>
 			<li><a href="https://htmlcolorcodes.com/" target="_blank" rel="noopener noreferrer">Colours</a> - Look up RGB and hex colour codes.</li>
 			<li><a href="https://www.whynopadlock.com/" target="_blank" rel="noopener noreferrer">Why No Padlock?</a> - Identify and fix HTTPS (SSL/TLS) issues.</li>
 			<li><a href="https://zerossl.com/" target="_blank" rel="noopener noreferrer">ZeroSSL</a> - Free SSL certificates.</li>
 		</ul>
-		
-		
+
+
+		<h4>Web code validators</h4>
+		<ul>
+			<li><a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C: HTML validator</a> - The official HTML validator from the World Wide Web Consortium (W3C).</li>
+			<li><a href="https://validator.w3.org/nu/" target="_blank" rel="noopener noreferrer">W3C: Nu HTML Checker</a> - An ongoing experiment in better HTML checking from the W3C.</li>
+			<li><a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener noreferrer">W3C: CSS Validation Service</a> - The W3C's CSS checker.</li>
+			<li><a href="https://www.w3.org/developers/tools/" target="_blank" rel="noopener noreferrer">W3C: other validators</a> - A selection of additional web code validators from the W3C.</li>
+			<li><a href="https://csslint.net/" target="_blank" rel="noopener noreferrer">CSS Lint</a> - Identify and fix CSS errors. (Not perfect, but still useful.).</li>
+			<li><a href="https://wave.webaim.org/" target="_blank" rel="noopener noreferrer">WAVE</a> - The Web Accessibility Evaluator. Optimise your website for inclusive accessibility.</li>
+			<li><a href="https://jshint.com/" target="_blank" rel="noopener noreferrer">JSHint</a> - A simple JavaScript checker.</li>
+
+		</ul>
 		
 		<h4>Security</h4>
 		<ul>
@@ -128,42 +134,23 @@
 		
 		<h4>Shopping</h4>
 		<ul>
-			<li><a href="https://uk.camelcamelcamel.com/" target="_blank" rel="noopener noreferrer">CamelCamelCamel</a> - Check historic prices of items on Amazon. Did prices double before the half-price sale?</li>
-			<li><a href="https://uk.pcpartpicker.com/" target="_blank" rel="noopener noreferrer">PC Part Picker</a> - Compare PC components to design and build a new PC.</li>
+			<li><a href="https://uk.camelcamelcamel.com/" target="_blank" rel="noopener noreferrer">CamelCamelCamel</a> - Check historic prices of items on Amazon.</li>
+			<li><a href="https://uk.pcpartpicker.com/" target="_blank" rel="noopener noreferrer">PC Part Picker</a> - Compare components to design and build a new PC.</li>
 		</ul>
 		
 		
 <hr>
 		<h3>Applications</h3>
 		
-		<h4>Audio and Video</h4>
+		<h4>Audio and video</h4>
 
 		<ul>
 			<li><a href="https://www.audacityteam.org/" rel="noopener noreferrer">Audacity</a> - Audio file editor.</li>
 			<li><a href="https://www.exactaudiocopy.de/" rel="noopener noreferrer">Exact Audio Copy (EAC)</a> - Rip CDs in the <em>best possible</em> quality.
-			Recover even physically damaged and otherwise unplayable CDs.</li>
+			Recover even physically damaged and otherwise unplayable CDs. Windows only.</li>
 			<li><a href="https://www.mp3tag.de/en/" rel="noopener noreferrer">Mp3tag</a> - Edit metadata tags for AV files (MP3, MP4, OGG, FLAC, etc.). Windows only.</li>
 			<li><a href="https://www.shotcut.org/" rel="noopener noreferrer">Shotcut</a> - Powerful yet beginner-friendly video editor.</li>
 		</ul>
-		
-		<h4>Transcoding with <code>ffmpeg</code></h4>
-		
-		<ul>
-			<li><a href="https://www.ffmpeg.org/" rel="noopener noreferrer">ffmpeg</a> - A reliable, standards-compliant transcoder for many file types.		
-				<p>To resize a WebP image with <code>ffmpeg</code>:</p>
-				<pre><code>ffmpeg -i input.webp -vf scale=800:600 output.webp</code></pre>
-				
-				<p>To resize without changing the aspect ratio, set the width or height to -1:</p>
-				<pre><code>ffmpeg -i input.webp -vf scale=800:-1 output.webp</code></pre>
-				
-				<p>To extract an AAC audio stream from an MP4 container:</p>
-				<pre><code>ffmpeg -i input.mp4 -vn -acodec copy output.aac</code></pre>
-				
-				<p>To create a new MP4 audio (.M4A) container with a single AAC stream:</p>
-				<pre><code>ffmpeg -i input.aac -c copy -bsf:a aac_adtstoasc output.m4a</code></pre>
-			</li>
-		</ul>
-
 		
 		<h4>System utilities</h4>
 		<ul>
@@ -173,9 +160,43 @@
 		</ul>
 
 		<h4>Windows desktop</h4>
+		
 		<ul>
-			<li><a href="https://www.highrez.co.uk/downloads/xmousebuttoncontrol.htm" rel="noopener noreferrer">X-Mouse Button Control</a> - Remap your mouse buttons.</li>
+			<li><a href="https://www.highrez.co.uk/downloads/xmousebuttoncontrol.htm" rel="noopener noreferrer">X-Mouse Button Control</a> -
+			Remap your mouse buttons.</li>
 		</ul>
+
+<hr>
+
+		<h3>Command line utilities</h3>
+		<Ul>
+		<li><a href="https://www.ffmpeg.org/" rel="noopener noreferrer">ffmpeg</a> - A reliable, standards-compliant transcoder for many file types.</li>
+		<li><a href="https://exiftool.org/" rel="noopener noreferrer">exiftool</a> - Remove metadata from many files.</li>
+		</Ul>
+
+		<h4>Transcode audio</h4>
+
+				<ul><li><p>Extract an AAC audio stream from an MP4 container (and remove the stream's metadata):</p>
+				<pre><code>ffmpeg -i input.mp4 -vn -acodec copy -map_metadata -1 output.aac</code></pre></li></ul>
+		
+				<ul><li><p>Create a new MP4 audio (.M4A) container with a single AAC stream:</p>
+				<pre><code>ffmpeg -i input.aac -c copy -bsf:a aac_adtstoasc -map_metadata -1 output.m4a</code></pre></li></ul>
+
+		<h4>Convert/resize images</h4>
+
+				<ul><li><p>Convert a WebP image to a JPEG:</p>
+				<pre><code>ffmpeg -i input.webp output.jpg</code></pre></li></ul>
+
+				<ul><li><p>Resize a WebP image:</p>
+				<pre><code>ffmpeg -i input.webp -vf scale=800:600 output.webp</code></pre></li></ul>
+				
+				<ul><li><p>To resize without changing the aspect ratio, set the width or height to -1:</p>
+				<pre><code>ffmpeg -i input.webp -vf scale=800:-1 output.webp</code></pre></li></ul>
+				
+		<h4>Remove metadata</h4>
+
+				<ul><li><p>To remove metadata from a file or container:</p>
+				<pre><code>exiftool -all= image.jpg</code></pre></li></ul>
 
 
         </section>
@@ -183,7 +204,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 The Rev. Illusion<br><a href="index.html#disclaimer">Disclaimer</a></p>
+        <p>&copy; 2025 The Rev. Illusion<br><a href="index.html#disclaimer">Disclaimer</a></p>
     </footer>
 
     <script src="theme-toggle.js"></script>
